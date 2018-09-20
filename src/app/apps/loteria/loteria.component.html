@@ -1,0 +1,142 @@
+<div class="row">
+  <div class="col-lg-4" *ngFor="let item of items | async ">
+      <!-- Loteria Normal -->
+    <div class="card" *ngIf="item.tipo === 'normal' ">
+        <div class="card-body shadow">
+            <div class="d-flex">
+                <div class="">
+                    <h3 class="card-title m-b-5 text-center">
+                        <span class="lstick"></span>{{item.nombre}}
+                    </h3>                                    
+                </div> 
+                <div class="user-img pull-right">
+                    <img class="img-resposive"  width="100" src="{{item.image}}" alt="{{item.nombre}}">  
+                </div>           
+            </div>                       
+         
+            <div class="stats-bar">
+                <form class="form-material m-t-40"  #formItem="ngForm" >
+                    <div class="row text-center">
+                        <div class="col-sm-4">
+                            <div class="p-10">
+                                <h6 class="m-b-0">En primera</h6>                     
+                                <div class="form-group">                              
+                                    <input type="number" class="form-control m-b-0"  [(ngModel)]="item.primera" #primera="ngModel" [ngModelOptions]="{standalone: true}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="p-10">
+                                <h6 class="m-b-0">En segunda</h6>
+                            
+                                <div class="form-group">                              
+                                    <input type="number" class="form-control m-b-0" [(ngModel)]="item.segunda" #segunda="ngModel" [ngModelOptions]="{standalone: true}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="p-10">
+                                <h6 class="m-b-0">En tercera</h6>
+                            
+                                <div class="form-group">                              
+                                    <input type="number" class="form-control m-b-0" [(ngModel)]="item.tercera" #tercera="ngModel" [ngModelOptions]="{standalone: true}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-block btn-info" (click)="onSubmit(item)">Actualizar</button>
+               </form>
+            </div>
+         </div>
+      </div>
+
+
+
+    <!-- Loteria Loto -->
+       
+        <div class="card" *ngIf="item.tipo === 'loto' ">
+            <div class="card-body shadow">
+                <div class="d-flex">
+                    <div class="">
+                        <h3 class="card-title m-b-5 text-center">
+                            <span class="lstick"></span>{{item.nombre}}
+                        </h3>                                    
+                    </div> 
+                    <div class="user-img pull-right">
+                        <img class="img-resposive"  width="100" src="{{item.image}}" alt="{{item.nombre}}">  
+                    </div>           
+                </div>                   
+            
+                <div class="stats-bar">
+                    <form class="form-material m-t-40"  #formItem="ngForm" >
+                        <div class="row text-center">
+                            <div class="col-sm-4">
+                                <div class="p-10">
+                                    <h6 class="m-b-0">Números 1</h6>                     
+                                    <div class="form-group">                              
+                                        <input type="number" class="form-control m-b-0"  [(ngModel)]="item.numeros[0]" #primera="ngModel" [ngModelOptions]="{standalone: true}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="p-10">
+                                    <h6 class="m-b-0">Números 2</h6>                     
+                                    <div class="form-group">                              
+                                        <input type="number" class="form-control m-b-0"  [(ngModel)]="item.numeros[1]" #primera="ngModel" [ngModelOptions]="{standalone: true}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="p-10">
+                                    <h6 class="m-b-0">Números 3</h6>                     
+                                    <div class="form-group">                              
+                                        <input type="number" class="form-control m-b-0"  [(ngModel)]="item.numeros[2]" #primera="ngModel" [ngModelOptions]="{standalone: true}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="p-10">
+                                    <h6 class="m-b-0">Números 4</h6>                     
+                                    <div class="form-group">                              
+                                        <input type="number" class="form-control m-b-0"  [(ngModel)]="item.numeros[3]" #primera="ngModel" [ngModelOptions]="{standalone: true}">
+                                    </div>
+                                </div>
+                                </div>
+                            <div class="col-sm-4">
+                                <div class="p-10">
+                                    <h6 class="m-b-0">Números 5</h6>                     
+                                    <div class="form-group">                              
+                                        <input type="number" class="form-control m-b-0"  [(ngModel)]="item.numeros[4]" #primera="ngModel" [ngModelOptions]="{standalone: true}">
+                                    </div>
+                                </div>
+                                </div>
+                            <div class="col-sm-4">
+                                <div class="p-10">
+                                    <h6 class="m-b-0">Números 6</h6>                     
+                                    <div class="form-group">                              
+                                        <input type="number" class="form-control m-b-0"  [(ngModel)]="item.numeros[5]" #primera="ngModel" [ngModelOptions]="{standalone: true}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-block btn-info" (click)="onSubmit(item)">Actualizar</button>
+                    </form>
+                </div>
+            </div>
+        </div>     
+    </div>
+</div> 
+
+
+
+
+    
+        
+
+
+  
+
+
+
+

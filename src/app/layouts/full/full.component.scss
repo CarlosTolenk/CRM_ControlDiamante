@@ -1,0 +1,35 @@
+//**********************************
+//             Varibles
+//*********************************
+
+$light: #eeff;
+
+
+
+.main-container{
+    margin-top: 60px;
+    margin-left: 235px;
+    padding: 15px;
+    -ms-overflow-x: hidden;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    position: relative;
+    overflow: hidden;
+}
+
+.light-logo{
+    display: inline-block;
+    max-width: 50px;
+    max-height: 50px;
+}
+
+.title-logo{
+    display: inline-block;
+    color: $light;
+    padding: 5px;
+}
+@media screen and (max-width: 992px) {
+    .main-container {
+        margin-left: 0px !important;
+    }
+}

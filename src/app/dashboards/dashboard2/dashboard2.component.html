@@ -1,0 +1,128 @@
+<!-- ========================================================== -->
+<!-- Contador de ventas  -->
+<!-- ========================================================== -->
+<app-income-counter></app-income-counter>
+
+
+<!-- ============================================================== -->
+<!-- Resumen de las ventas -->
+<!-- ============================================================== -->
+<div class="row">
+    <div class="col-lg-6 col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex">
+                        <div>
+                            <h3 class="card-title m-b-5"><span class="lstick"></span>Resumen de Ventas</h3>
+                        </div>
+                    </div>
+                    <div class="m-t-40" style="height:400px;">
+                        <canvas baseChart [datasets]="lineChartData1" [labels]="lineChartLabels1" [options]="lineChartOptions1" [colors]="lineChartColors1" [legend]="lineChartLegend1" [chartType]="lineChartType1"> </canvas>
+                    </div>
+                    <div class="stats-bar">
+                        <div class="row text-center">
+                            <div class="col-lg-4 col-md-4">
+                                <div class="p-20">
+                                    <h6 class="m-b-0">Ventas Totales</h6>
+                                    <h3 class="m-b-0">RD$110,345</h3>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4">
+                                <div class="p-20">
+                                    <h6 class="m-b-0">Este Mes</h6>
+                                    <h3 class="m-b-0">RD$47,589</h3>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4">
+                                <div class="p-20">
+                                    <h6 class="m-b-0">Esta Semana</h6>
+                                    <h3 class="m-b-0">RD$15,476</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex">
+                        <div>
+                            <h3 class="card-title m-b-5"><span class="lstick"></span>Planes Más Vendidos </h3>
+                        </div>
+                    </div>
+                    <div class="m-t-40" style="height:400px;">
+                        <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="lineChartOptions1" [legend]="barChartLegend" [chartType]="barChartType" [colors]="barChartColors">
+                        </canvas>
+                    </div>
+                    <div class="stats-bar">
+                        <div class="row text-center">
+                            <div class="col-lg-4 col-md-4">
+                                <div class="p-20">
+                                    <h6 class="m-b-0">Total de Planes</h6>
+                                    <h3 class="m-b-0">36,000</h3>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4">
+                                <div class="p-20">
+                                    <h6 class="m-b-0">Este Mes</h6>
+                                    <h3 class="m-b-0">7,589</h3>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4">
+                                <div class="p-20">
+                                    <h6 class="m-b-0">Esta Semana</h6>
+                                    <h3 class="m-b-0">1,476</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>    
+</div>
+
+
+<!-- ============================================================== -->
+<!-- Suscriptores y mensajes -->
+<!-- ============================================================== -->
+<div class="row">
+    <div class="col-lg-4 col-md-12">        
+        <app-social-slider></app-social-slider>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Gráfica de suscriptores-->
+    <!-- ============================================================== -->      
+
+    <div class="col-lg-8 col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex">
+                    <h4 class="card-title"><span class="lstick"></span>Clientes Suscritos</h4>
+                    <ul class="list-inline m-b-0 ml-auto">
+                        <li>
+                            <h6 class="text-muted text-success"><i class="fa fa-circle font-10 m-r-10 "></i>Mensajes Enviados</h6> </li>
+                        <li>
+                            <h6 class="text-muted text-info"><i class="fa fa-circle font-10 m-r-10"></i>Clientes Suscriptos</h6> </li>
+                    </ul>
+                </div>
+                <div style="height:450px;">
+                    <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType"> </canvas>
+                </div>
+            </div>
+        </div>
+    </div>    
+</div>
+
+<!-- ============================================================== -->
+<!-- Planes and feed -->
+<!-- ============================================================== -->
+<div class="row">
+    <div class="col-lg-6">
+        <app-project></app-project>
+    </div>
+    <div class="col-lg-6">
+        <app-feeds></app-feeds>
+    </div>
+</div>

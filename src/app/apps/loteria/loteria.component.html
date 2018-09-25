@@ -1,7 +1,110 @@
+<!--***************** Números de Selección ******************-->
+
+<div class="row" *ngIf="diamantesNumbers">   
+        <div class="col-lg-6">
+            <div class="card">               
+                <div class="card-body shadow">
+                    <div class="d-flex">
+                        <div class="">
+                            <h4 class="card-title m-b-5">
+                                <span class="lstick"></span>Números de Selección Diamante
+                            </h4>                                                          
+                        </div>  
+                        <div class="pull-right">
+                            <button  class="btn btn-success btn-circle" (click)="addSeleccionNumber()"><i class="fa fa-plus"></i> </button>
+                        </div>                                  
+                    </div>                       
+                    <div class="stats-bar">
+                        <form class="form-material m-t-40"  #formSel="ngForm" >
+                                <div class="table-responsive">
+                                        <table class="table">
+                                            <thead class="thead-dark">
+                                                <tr>
+                                                <th scope="col">Cantidad</th>
+                                                <th scope="col">Selección</th>
+                                                <th scope="col">Borrar</th>                                                
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr  *ngFor="let item of diamantesNumbers; let in=index; trackBy:trackByFn">
+                                                    <th scope="row text-aling" >{{in+1}}</th>                                              
+                                                    <td scope="row">                                                                             
+                                                        <input type="number" class="form-control m-b-0" [(ngModel)]="diamantesNumbers[in]"  name="item-[in]" [ngModelOptions]="{standalone: true}" >
+                                                    </td>
+                                                    <td>
+                                                        <button class="btn btn-rounded btn-outline-danger" (click)="removeSeleccionNumber(diamantesNumbers[in])">Eliminar</button>
+                                                    </td>                                            
+                                                </tr>                       
+                                            </tbody>
+                                        </table>
+                                    </div>  
+                            <button class="btn btn-block btn-info" (click)="onChangeSeleccion()">Actualizar</button>
+                        </form>
+                    </div>
+                 </div>
+            </div>
+        </div>
+
+    
+    <!--***************** Líneas Directas ******************-->
+    
+ 
+        <div class="col-lg-6">
+            <div class="card">               
+                <div class="card-body shadow">
+                    <div class="d-flex">
+                        <div class="">
+                            <h4 class="card-title m-b-5">
+                                <span class="lstick"></span>Números de la Línea Directa
+                            </h4>                                                          
+                        </div>  
+                        <div class="pull-right">
+                            <button  class="btn btn-success btn-circle" (click)="addLineaNumber()"><i class="fa fa-plus"></i> </button>
+                        </div>                                  
+                    </div>                       
+                    <div class="stats-bar">
+                        <form class="form-material m-t-40"  #formSel="ngForm" >
+                                <div class="table-responsive">
+                                        <table class="table">
+                                            <thead class="thead-dark">
+                                                <tr>
+                                                <th scope="col">Cantidad</th>
+                                                <th scope="col">Selección</th>
+                                                <th scope="col">Borrar</th>                                                
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr  *ngFor="let item of lineasNumbers; let in=index; trackBy:trackByFn">
+                                                    <th scope="row text-aling" >{{in+1}}</th>                                              
+                                                    <td scope="row">                                                                             
+                                                        <input type="number" class="form-control m-b-0" [(ngModel)]="lineasNumbers[in]"  name="item-[in]" [ngModelOptions]="{standalone: true}" >
+                                                    </td>
+                                                    <td>
+                                                        <button class="btn btn-rounded btn-outline-danger" (click)="removeLineaNumber(lineasNumbers[in])">Eliminar</button>
+                                                    </td>                                            
+                                                </tr>                       
+                                            </tbody>
+                                        </table>
+                                    </div>  
+                            <button class="btn btn-block btn-info" (click)="onChangeLinea()">Actualizar</button>
+                        </form>
+                    </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+<div class="row">
+    <div class="text-align">
+        <h3>Panel de Loterias</h3>
+    </div>
+</div>
+   
+<!-- Todas las loterias -->
 <div class="row">
   <div class="col-lg-4" *ngFor="let item of items | async ">
       <!-- Loteria Normal -->
-    <div class="card" *ngIf="item.tipo === 'normal' ">
+    <div class="card" *ngIf="item.tipo === 'normal'">
         <div class="card-body shadow">
             <div class="d-flex">
                 <div class="">
@@ -127,6 +230,12 @@
         </div>     
     </div>
 </div> 
+
+
+
+
+
+
 
 
 

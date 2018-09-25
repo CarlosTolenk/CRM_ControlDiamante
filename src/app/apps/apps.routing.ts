@@ -25,7 +25,7 @@ export const AppsRoutes: Routes = [
         path: 'loteria',
         component: LoteriaComponent,
         data: {
-          title: 'Administrador de Loteria',
+          title: 'Administrador de Loteria y Líneas Directas',
           urls: [{ title: 'Dashboard', url: '/dashboard' }, { title: 'Loteria' }]
         }
       },

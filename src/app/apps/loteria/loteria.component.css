@@ -13,6 +13,16 @@
   box-sizing: border-box;
 }
 
+.text-align{
+  display: flex;
+  flex-direction: 'row';
+  justify-content: 'flex-end'; 
+  align-content: 'flex-end';
+  align-items: 'center';
+  padding: 10px;
+}
+
+
 
 /* Form */
   textarea {

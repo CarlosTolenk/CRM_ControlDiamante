@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-
+import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrModule } from 'ngx-toastr';
 
 import { NotFoundComponent } from './404/not-found.component';
 import { LockComponent } from './lock/lock.component';
@@ -14,7 +15,13 @@ import { Signup2Component } from './signup2/signup2.component';
 import { AuthenticationRoutes } from './authentication.routing';
 
 @NgModule({
-  imports: [CommonModule, RouterModule.forChild(AuthenticationRoutes), NgbModule],
+  imports: [
+  CommonModule,
+  FormsModule,
+  RouterModule.forChild(AuthenticationRoutes),
+  NgbModule,
+  ToastrModule.forRoot(),
+],
   declarations: [NotFoundComponent, LoginComponent, SignupComponent, LockComponent, Login2Component, Signup2Component]
 })
 export class AuthenticationModule {}

@@ -30,7 +30,7 @@
                 <li>
                     <div class="message-center" [perfectScrollbar]="config">
                        <!-- Message -->
-                        <a href="#" *ngFor="let notification of notifications">
+                        <a href="javascript:void(0)" *ngFor="let notification of notifications">
                             <div class="round {{notification.round}}"><i class="{{notification.icon}}"></i></div>
                             <div class="mail-contnet">
                                 <h5>{{notification.title}}</h5> <span class="mail-desc">{{notification.subject}}</span> <span class="time">{{notification.time}}</span> 
@@ -61,7 +61,7 @@
                 </li>
                 <li>
                     <div class="message-center" [perfectScrollbar]="config">
-                        <a href="#" *ngFor="let mymessage of mymessages">
+                        <a href="javascript:void(0)" *ngFor="let mymessage of mymessages">
                             <div class="user-img"> <img src="{{mymessage.useravatar}}" alt="user" class="img-circle" width="40"> 
                                 <span class="profile-status {{mymessage.status}} pull-right"></span> 
                             </div>
@@ -93,23 +93,24 @@
     <!-- Profile -->
     <!-- ============================================================== -->
     <li class="nav-item dropdown" ngbDropdown placement="bottom-right">
-        <a ngbDropdownToggle class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/images/users/1.jpg" alt="user" class="profile-pic" /></a>
+        <a ngbDropdownToggle class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/images/users/user-admin.png" alt="user" class="profile-pic" /></a>
         <div class="dropdown-menu animated slideInDown" ngbDropdownMenu>
             <ul class="dropdown-user">
                 <li>
                     <div class="dw-user-box">
-                        <div class="u-img"><img src="assets/images/users/1.jpg" alt="user"></div>
+                        <div class="u-img"><img src="assets/images/users/admin.png" alt="user"></div>
                         <div class="u-text">
-                            <h4>Steave Jobs</h4>
-                            <p class="text-muted">varun@gmail.com</p><a href="pages-profile.html" class="btn btn-rounded btn-danger btn-sm">Ver Perfil</a></div>
+                            <h4>Control Diamante</h4>
+                            <p class="text-muted">staffcontroldiamante</p>
+                            <a href="javascript:void(0)" class="btn btn-rounded btn-danger btn-sm">Ver Perfil</a></div>
                     </div>
                 </li>
                 <li role="separator" class="divider"></li>                  
-                <li><a href="#"><i class="icon-bubble"></i> Chat</a></li>
+                <li><a href="javascript:void(0)"><i class="icon-bubble"></i> Chat</a></li>
                 <li role="separator" class="divider"></li>
-                <li><a href="#"><i class="ti-settings"></i> Configuración</a></li>
+                <li><a href="javascript:void(0)"><i class="ti-settings"></i> Configuración</a></li>
                 <li role="separator" class="divider"></li>
-                <li><a href="#"><i class="fa fa-power-off"></i> Cerrar Sección</a></li>
+                <li><a  (click)="onSignOut()"><i class="fa fa-power-off"></i> Cerrar Sección</a></li>
             </ul>
         </div>
     </li>

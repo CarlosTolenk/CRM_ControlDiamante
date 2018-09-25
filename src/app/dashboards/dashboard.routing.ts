@@ -17,10 +17,10 @@ export const DashboardRoutes: Routes = [
         }
       },
       {
-        path: 'dashboard2',
+        path: 'dashboard',
         component: Dashboard2Component,
         data: {
-          title: 'Dashboard',
+          title: 'Dashboard General',
           urls: [{ title: 'Dashboard', url: '/dashboard' }, { title: 'Dashboard' }]
         }
       },

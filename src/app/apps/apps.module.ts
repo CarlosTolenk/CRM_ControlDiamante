@@ -20,7 +20,25 @@ import { ChatComponent } from './chat/chat.component';
 
 @NgModule({
   // tslint:disable-next-line:max-line-length
-  imports: [CommonModule, FormsModule, NgbModalModule.forRoot(), CalendarModule.forRoot(), ToastrModule.forRoot(), QuillModule, DragulaModule, RouterModule.forChild(AppsRoutes)],
-  declarations: [EmailComponent, TaskboardComponent, FullcalendarComponent, ClienteComponent, LoteriaComponent, MensajeComponent, PlaneComponent, ChatComponent]
+  imports: [
+    CommonModule,
+    FormsModule,
+    NgbModalModule.forRoot(),
+    CalendarModule.forRoot(),
+    ToastrModule.forRoot(),
+    QuillModule,
+    DragulaModule,
+    RouterModule.forChild(AppsRoutes)
+  ],
+  declarations: [
+    EmailComponent,
+    TaskboardComponent,
+    FullcalendarComponent,
+    ClienteComponent,
+    LoteriaComponent,
+    MensajeComponent,
+    PlaneComponent,
+    ChatComponent
+  ]
 })
 export class AppsModule {}

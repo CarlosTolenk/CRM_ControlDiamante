@@ -15,7 +15,7 @@ export const Approutes: Routes = [
       { path: '', redirectTo: '/authentication/login', pathMatch: 'full' },
       { path: 'dashboard', loadChildren: './dashboards/dashboard.module#DashboardModule', canActivate: [AuthenticationGuard] },
       // { path: 'starter', loadChildren: './starter/starter.module#StarterModule' },
-      // { path: 'component', loadChildren: './component/component.module#ComponentsModule' },
+      { path: 'component', loadChildren: './component/component.module#ComponentsModule' },
       // { path: 'icons', loadChildren: './icons/icons.module#IconsModule' },
       // { path: 'forms', loadChildren: './form/forms.module#FormModule' },
       // { path: 'tables', loadChildren: './table/tables.module#TablesModule' },

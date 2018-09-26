@@ -1,0 +1,48 @@
+.img-thumbnail {
+    padding: 0.25rem;
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+    max-width: 100%!important;
+    height: auto;
+}
+
+.contain-img{ 
+    max-width: 5rem;
+    height: auto;
+}
+
+.d-flex{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.title-table{
+    text-align: center;
+}
+
+.accion-btn{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+}
+
+.text-align{
+    display: flex; 
+    align-content: center;
+    text-align: center;
+    align-self: center;
+    margin-top: 2rem;
+}
+
+.dark-modal .modal-content {
+    background-color: #009efb;
+    color: white;
+}
+
+.dark-modal .close {
+    color: white;
+}
+

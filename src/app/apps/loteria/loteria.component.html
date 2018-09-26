@@ -213,7 +213,7 @@
                                     </div>
                                 </div>
                                 </div>
-                            <div class="col-sm-4">
+                            <div class="col-sm-4" *ngIf="item.numeros[5] " >
                                 <div class="p-10">
                                     <h6 class="m-b-0">Números 6</h6>                     
                                     <div class="form-group">                              
@@ -221,6 +221,14 @@
                                     </div>
                                 </div>
                             </div>
+                            <!-- <div class="col-sm-4 offset-4" *ngIf="item.nombre == 'Loto Pool' ">
+                                <div class="p-10">
+                                    <h6 class="m-b-0">Números +</h6>                     
+                                    <div class="form-group">                              
+                                        <input type="number" class="form-control m-b-0"  [(ngModel)]="item.numeros[6]" #primera="ngModel" [ngModelOptions]="{standalone: true}">
+                                    </div>
+                                </div>
+                            </div> -->
                         </div>
 
                         <button class="btn btn-block btn-info" (click)="onSubmit(item)">Actualizar</button>

@@ -12,7 +12,7 @@ export const ROUTES: RouteInfo[] = [
     submenu: []
   },
   {
-    path: '/dashboard/dashboard2',
+    path: '/dashboard/dashboard',
     title: 'Dashboards',
     icon: 'mdi mdi-gauge',
     class: 'has-arrow',

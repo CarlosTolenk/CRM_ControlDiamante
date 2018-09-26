@@ -39,5 +39,9 @@ export class AuthService {
     // this.router.navigate(['/'])
   }
 
+  getStatus(){
+    return this.afAuth.authState;
+  }
+
 
 }

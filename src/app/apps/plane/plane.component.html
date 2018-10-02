@@ -27,33 +27,33 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr  *ngFor="let item of items | async; let in=index">
+                                <tr  *ngFor="let item of items; let in=index">
                                     <th scope="row">
                                         <p class="text-align">{{in+1}}</p>
                                     </th>                                              
                                     <td scope="row">                                                                             
-                                        <p class="text-align">{{item.nombre_plan}}</p>
+                                        <p class="text-align">{{item.data.nombre_plan}}</p>
                                     </td>
                                     <td scope="row">        
                                       <div class="contain-img">
-                                          <img class="img-thumbnail" src="{{item.imagen_url}}" alt="{{item.nombre_plan}}">
+                                          <img class="img-thumbnail" src="{{item.data.imagen_url}}" alt="{{item.data.nombre_plan}}">
                                       </div>                            
                                       
                                     </td>
                                     <td scope="row">                                                                             
-                                        <p class="text-align">{{item.precio}}</p>
+                                        <p class="text-align">{{item.data.precio}}</p>
                                     </td>
                                     
                                     <td scope="row">                                                                             
-                                        <p class="text-align">{{item.cantidad_mensaje}}</p>
+                                        <p class="text-align">{{item.data.cantidad_mensaje}}</p>
                                     </td>
                                     <td scope="row">                                                                             
-                                        <p class="text-align">{{item.cantidad_numero}}</p>
+                                        <p class="text-align">{{item.data.cantidad_numero}}</p>
                                     </td >
                                     <td scope="row">
                                       <div class="accion-btn">
-                                          <button type="button" class="btn btn-success btn-circle" (click)="viewPlan(content, item)" ><i class="fa fa-eye"></i> </button>
-                                          <button type="button" class="btn btn-info btn-circle"><i class="fa fa-edit"></i> </button>
+                                          <button type="button" class="btn btn-success btn-circle" (click)="viewPlan(content, item.data)" ><i class="fa fa-eye"></i> </button>
+                                          <button type="button" class="btn btn-info btn-circle" (click)="editarPlan(item.data)"><i class="fa fa-edit"></i> </button>
                                           <button type="button" class="btn btn-danger btn-circle"><i class="fa fa-trash"></i> </button>
                                       </div>
                                       
@@ -77,25 +77,47 @@
   <!-- ViewPlan -->
 
  <div class="row">
-    <div class="col-md-6">
+    <div class="col-lg-12">
         <!-- <div class="card">
             <div class="card-body"> -->
                 <!-- <h3 class="card-title">Modal with default options</h3>
                 <h6 class="card-subtitle">This is basic toggletype accordion</h6> -->
         <ng-template #content let-c="close" let-d="dismiss">
-                <div class="modal-header">
-                  <h4 class="modal-title">{{detailPlan.title}}</h4>
-                  <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <p>One fine body&hellip;</p>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" (click)="c('Close click')">Cierra</button>
-                </div>
-				</ng-template>
+            <div class="modal-header">
+                <h4 class="modal-title title-modal-plan">Nombre del Plan: <span class="title-modal">{{detailPlan.nombre_plan}}</span></h4>
+                <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                       <img class="img-responsive img-thumbnail" src="{{detailPlan.imagen}}" alt="{{detailPlan.nombre_plan}}">
+                    </div>
+                    <div class="col-md-6">
+                        <p class="title-modal">Fecha de Publicación:<span class="info-modal">{{detailPlan.fecha}}</span></p>    
+                        <p class="title-modal">Precio:<span class="info-modal">{{detailPlan.precio}}</span></p>  
+                        <p class="title-modal">Cantidad de Mensajes:<span class="info-modal">{{detailPlan.cantidad_mensaje}}</span></p>                      
+                        <p class="title-modal">Cantidad de Números:<span class="info-modal">{{detailPlan.cantiada_numero}}</span> </p>
+                        <p class="title-modal">Duración:<span class="info-modal">{{detailPlan.duracion}}</span> </p>
+                        <p class="title-modal">Efectividad:<span class="info-modal">{{detailPlan.efectividad}}</span> </p>
+                        <p class="title-modal">Loterias:<span class="info-modal">{{detailPlan.loteria}}</span> </p>  
+                        <p class="title-modal">Días de Envio:<span class="info-modal">{{detailPlan.dias_entrega}}</span> </p>                           
+                    </div>
+                 </div>
+            </div>
+            <div class="modal-footer-s">
+                <div class="stats">
+                    <p class="title-modal">Likes Recibidos:<span class="info-modal">{{detailPlan.likes}}</span> </p>
+                    <p class="title-modal">Compartidos:<span class="info-modal">{{detailPlan.shared}}</span></p>
+                </div>     
+                <div class="group-button">
+                    <button type="button" class="btn btn-info" (click)="[ c('Close click'), editarPlan(detailPlan)]">Editar</button> 
+                    <button type="button" class="btn btn-danger" (click)="c('Close click')">Cerrar</button>
+                </div>          
+  
+            </div>
+		</ng-template>
 
 				<!-- <button class="btn btn-lg btn-outline-primary" (click)="open2(content)">Launch Carlos modal</button> -->
 				<!-- <div class="m-t-20">{{closeResult}}</div> -->

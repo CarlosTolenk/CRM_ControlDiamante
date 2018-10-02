@@ -17,6 +17,8 @@ import { LoteriaComponent } from './loteria/loteria.component';
 import { MensajeComponent } from './mensaje/mensaje.component';
 import { PlaneComponent } from './plane/plane.component';
 import { ChatComponent } from './chat/chat.component';
+import { EditarPlaneComponent } from './plane/editar-planes/editar-planes.component';
+
 
 @NgModule({
   // tslint:disable-next-line:max-line-length
@@ -38,7 +40,8 @@ import { ChatComponent } from './chat/chat.component';
     LoteriaComponent,
     MensajeComponent,
     PlaneComponent,
-    ChatComponent
+    ChatComponent,
+    EditarPlaneComponent
   ]
 })
 export class AppsModule {}

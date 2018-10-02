@@ -1,0 +1,117 @@
+<!-- <a href="javascript:void(0)" (click)="goBack()">
+    <-Back
+</a>
+
+<h1>HOLAAA <span>{{_idPlan}}</span></h1>
+<h2 *ngIf="item">{{item.nombre_plan}}</h2>
+<h2 *ngIf="item"> {{item.precio}}</h2>
+<h2 *ngIf="item">{{item.fecha_publicacion}}</h2> -->
+<div class="row arrow-left">
+        <button class="btn btn-info waves-effect waves-light" (click)="goBack()"><span class="btn-label"><i class="fa fa-arrow-left"></i></span>Volver</button>
+</div>
+<div class="row" *ngIf="item">   
+    <div class="col-lg-12">
+        <div class="card">               
+            <div class="card-body shadow">
+                <div class="d-flex">                 
+                    <div class="pull-right">
+                        <!-- <button class="btn btn-info waves-effect waves-light" type="button"><span class="btn-label"><i class="fa fa-plus"></i></span>Agregar</button> -->
+                    </div>                                  
+                </div>                       
+                <div class="stats-bar">   
+                    <div class="row">
+                        <div class="col-lg-4 offset-1 contain-img">
+                                <img class="img-thumbnail" src="{{item.imagen_url}}" alt="{{item.nombre_plan}}">
+                        </div>  
+                        <div class="col-lg-6">
+                            <form class="form-material m-t-40"  #formItem="ngForm" >
+                                    <div class="row text-center">
+                                        <div class="col-sm-10">
+                                            <div class="p-9">                                                               
+                                                <div class="form-group content-form">                                                 
+                                                    <label class="label-title" for="nombre_plan">Nombre:</label>                            
+                                                    <input type="text" id="nombre_plan" class="form-control"  [(ngModel)]="item.nombre_plan" #nombre_plan="ngModel" [ngModelOptions]="{standalone: true}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-10">
+                                            <div class="p-9">                                                               
+                                                <div class="form-group content-form">                                                 
+                                                    <label class="label-title" for="nombre_plan">Mensajes:</label>                            
+                                                    <input type="text" id="nombre_plan" class="form-control"  [(ngModel)]="item.cantidad_mensaje" #nombre_plan="ngModel" [ngModelOptions]="{standalone: true}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-10">
+                                            <div class="p-9">                                                               
+                                                <div class="form-group content-form">                                                 
+                                                    <label class="label-title" for="nombre_plan">Números:</label>                            
+                                                    <input type="text" id="nombre_plan" class="form-control"  [(ngModel)]="item.cantidad_numero" #nombre_plan="ngModel" [ngModelOptions]="{standalone: true}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-10">
+                                            <div class="p-9">                                                               
+                                                <div class="form-group content-form">                                                 
+                                                    <label class="label-title" for="nombre_plan">Loterias:</label>                            
+                                                    <input type="text" id="nombre_plan" class="form-control"  [(ngModel)]="item.loterias" #nombre_plan="ngModel" [ngModelOptions]="{standalone: true}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-10">
+                                            <div class="p-9">                                                               
+                                                <div class="form-group content-form">                                                 
+                                                    <label class="label-title" for="nombre_plan">Duración:</label>                            
+                                                    <input type="text" id="nombre_plan" class="form-control"  [(ngModel)]="item.duracion" #nombre_plan="ngModel" [ngModelOptions]="{standalone: true}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-10">
+                                            <div class="p-9">                                                               
+                                                <div class="form-group content-form">                                                 
+                                                    <label class="label-title" for="nombre_plan">Precio:</label>                            
+                                                    <input type="text" id="nombre_plan" class="form-control"  [(ngModel)]="item.precio" #nombre_plan="ngModel" [ngModelOptions]="{standalone: true}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-10">
+                                            <div class="p-9">                                                               
+                                                <div class="form-group content-form">                                                 
+                                                    <label class="label-title" for="nombre_plan">Efectividad:</label>                            
+                                                    <textarea class="form-control" [(ngModel)]='item.efectividad' rows="5" cols="120"  #efectividad="ngModel" [ngModelOptions]="{standalone: true}">                             
+                                                    </textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="col-sm-10">
+                                            <div class="p-10">                                                               
+                                                <div class="form-group content-form">                                                 
+                                                    <label class="label-title" for="nombre_plan">Entregas:</label>                            
+                                                    <input type="checkbox" [(ngModel)]="item.dias_entreg" [checked]="true" #entregas="ngModel" [ngModelOptions]="{standalone: true}">                                                  
+                                                </div>
+                                            </div>
+                                        </div> -->
+                                        <div class="col-sm-12">
+                                                <label class="label-title-s" for="nombre_plan">Días de Entregas:</label>   
+                                            <div class="p-3">   
+                                                <div class="form-group content-form">                                                                 
+                                                        <div class="custom-control custom-checkbox mr-sm-2" *ngFor="let item of day; let i=index">
+                                                            <input type="checkbox" class="custom-control-input" id="checkbox-{{i}}"  [(ngModel)]="item.checked" [ngModelOptions]="{standalone: true}"> 
+                                                            <label class="custom-control-label" for="checkbox-{{i}}">{{item.dia}}</label>
+                                                        </div>                                                                       
+                                                    </div>                                             
+                                                </div>                                     
+                                         </div>  
+                                      
+                                    </div>
+                                <button class="btn btn-block btn-info" (click)="onSubmit(item)">Actualizar</button>
+                            </form>
+                        </div>
+                     </div>
+                </div>
+            </div>   
+         </div>   
+    </div>
+</div>   
+
+

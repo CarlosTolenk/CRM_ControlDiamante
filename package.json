@@ -22,7 +22,7 @@
         "@angular/platform-browser": "^6.0.3",
         "@angular/platform-browser-dynamic": "^6.0.3",
         "@angular/router": "^6.0.3",
-        "@ng-bootstrap/ng-bootstrap": "^1.1.2",
+        "@ng-bootstrap/ng-bootstrap": "^1.1.2", 
         "@swimlane/ngx-datatable": "^13.0.0",
         "angular-calendar": "^0.25.2",
         "angularfire2": "^5.0.0-rc.11",

@@ -1,10 +1,12 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Router } from "@angular/router";
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
 import { forEach } from '@angular/router/src/utils/collection';
 import { NgbModal, ModalDismissReasons, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { PlanesService } from '../../services/planes.service';
 
 
 @Component({
@@ -17,7 +19,7 @@ export class PlaneComponent implements OnInit {
 
    //Planes
    private itemsCollection: AngularFirestoreCollection<any>;
-   public items: Observable<any[]>; 
+   public items = [];
    //Modal
    closeResult: string;
    //Objects
@@ -26,26 +28,49 @@ export class PlaneComponent implements OnInit {
   constructor(
     private readonly db: AngularFirestore,
     private modalService: NgbModal,
-    private modalService2: NgbModal     
+    private modalService2: NgbModal,
+    private _planesService: PlanesService,
+    private router: Router   
     ) {
-    this.itemsCollection = db.collection<any>('planes');
-    this.items = this.itemsCollection.snapshotChanges().pipe(
-      map(actions => actions.map(a => {
-        const data = a.payload.doc.data() as any;      
-        const id = a.payload.doc.id;        
-        return {id, ...data};
-      }))
-    );  
-   }
+    // this.itemsCollection = db.collection<any>('planes');
+    // this.items = this.itemsCollection.snapshotChanges().pipe(
+    //   map(actions => actions.map(a => {
+    //     const data = a.payload.doc.data() as any;      
+    //     const id = a.payload.doc.id;        
+    //     return {id, ...data};
+    //   }))
+    // );  
+  }
 
   ngOnInit() {
-
+    this._planesService.getPlanes().subscribe((catsSnapshot) => {
+      this.items = [];
+      catsSnapshot.forEach((planesData: any) => {   
+        this.items.push({
+          id: planesData.payload.doc.id,
+          data: planesData.payload.doc.data()
+        });
+      })
+    });
   }
+  
 
   viewPlan(content, item) {
     console.log(item);
     this.detailPlan = {
-      title: item.nombre_plan
+      nombre_plan: item.nombre_plan,
+      fecha: item.fecha_publicacion,
+      precio: item.precio,
+      duracion: item.duracion,
+      efectividad: item.efectividad,
+      likes: item.likes_recibidos,
+      shared: item.total_shared,
+      loteria: item.loterias,
+      cantidad_mensaje: item.cantidad_mensaje,
+      cantiada_numero: item.cantidad_numero,
+      imagen: item.imagen_url,
+      dias_entrega: item.dias_entreg,
+      id: item.id
     };
 
     this.modalService.open(content).result.then(
@@ -58,6 +83,7 @@ export class PlaneComponent implements OnInit {
     ); 
   
   }
+
   open(content) {
     this.modalService2.open(content, { windowClass: 'dark-modal' });
   }
@@ -70,5 +96,13 @@ export class PlaneComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
+
+
+  editarPlan(item){
+    // console.log(item);
+    this.router.navigate(['/apps/plane/', item.id]);
+  }
+
+
 
 }

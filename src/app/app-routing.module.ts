@@ -21,7 +21,7 @@ export const Approutes: Routes = [
       // { path: 'tables', loadChildren: './table/tables.module#TablesModule' },
       // { path: 'charts', loadChildren: './charts/charts.module#ChartModule' },
       // { path: 'widgets', loadChildren: './widgets/widgets.module#WidgetsModule' },
-      // { path: 'extra-component', loadChildren: './extra-component/extra-component.module#ExtraComponentModule' },
+      { path: 'extra-component', loadChildren: './extra-component/extra-component.module#ExtraComponentModule' },
       { path: 'apps', loadChildren: './apps/apps.module#AppsModule', canActivate: [AuthenticationGuard] }
       // { path: 'sample-pages', loadChildren: './sample-pages/sample-pages.module#SamplePagesModule' }
     ]

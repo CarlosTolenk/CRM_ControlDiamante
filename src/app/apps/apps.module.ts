@@ -18,6 +18,7 @@ import { MensajeComponent } from './mensaje/mensaje.component';
 import { PlaneComponent } from './plane/plane.component';
 import { ChatComponent } from './chat/chat.component';
 import { EditarPlaneComponent } from './plane/editar-planes/editar-planes.component';
+import {ProgressBarModule} from "angular-progress-bar"
 
 
 @NgModule({
@@ -29,7 +30,9 @@ import { EditarPlaneComponent } from './plane/editar-planes/editar-planes.compon
     CalendarModule.forRoot(),
     ToastrModule.forRoot(),
     QuillModule,
+    ProgressBarModule,
     DragulaModule,
+    
     RouterModule.forChild(AppsRoutes)
   ],
   declarations: [

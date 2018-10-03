@@ -9,15 +9,22 @@ import { map } from 'rxjs/operators';
 export class PlanesService {
 
 
-  constructor( private firestore: AngularFirestore) { }
+  constructor(
+     private firestore: AngularFirestore   
+    ) { }
 
   //Obtiene todos los planes
   public getPlanes() {
     return this.firestore.collection('planes').snapshotChanges();
   }
 
-    //Obtiene un plan en específico
-    public getPlan(documentId: string) {
-      return this.firestore.collection('planes').doc(documentId).snapshotChanges();
+  //Obtiene un plan en específico
+  public getPlan(documentId: string) {
+    return this.firestore.collection('planes').doc(documentId).snapshotChanges();
+  }
+
+    //Actualiza un plan
+    public updatePlan(documentId: string, data: any) {
+      return this.firestore.collection('planes').doc(documentId).set(data);
     }
 }

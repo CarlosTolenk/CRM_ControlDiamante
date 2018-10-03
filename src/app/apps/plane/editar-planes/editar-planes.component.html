@@ -20,8 +20,18 @@
                 </div>                       
                 <div class="stats-bar">   
                     <div class="row">
-                        <div class="col-lg-4 offset-1 contain-img">
-                                <img class="img-thumbnail" src="{{item.imagen_url}}" alt="{{item.nombre_plan}}">
+                        <div class="col-lg-4 offset-1  ">
+                            <div class="container">
+                                <img class="image" [src]="item.imagen_url" alt="{{item.nombre_plan}}"> 
+                                <div class="middle">
+                                    <div class="upload-btn-wrapper">
+                                            <button type="button" class="btn btn-info btn-circle btn-xl"><i class="fa fa-upload"></i></button>
+                                        <input type="file" name="myfile" (change)="uploadFile($event)"/>
+                                    </div>  
+                                </div>                             
+                            </div>
+                            <progress-bar [progress]="uploadPercent | async" [color-degraded]="{'0': '#0091F0',  '15': '#0091F0', '25': '#0091F0', '95': '#00B01D'}"></progress-bar>
+                        
                         </div>  
                         <div class="col-lg-6">
                             <form class="form-material m-t-40"  #formItem="ngForm" >
@@ -91,16 +101,18 @@
                                                 </div>
                                             </div>
                                         </div> -->
-                                        <div class="col-sm-12">
-                                                <label class="label-title-s" for="nombre_plan">Días de Entregas:</label>   
-                                            <div class="p-3">   
-                                                <div class="form-group content-form">                                                                 
-                                                        <div class="custom-control custom-checkbox mr-sm-2" *ngFor="let item of day; let i=index">
-                                                            <input type="checkbox" class="custom-control-input" id="checkbox-{{i}}"  [(ngModel)]="item.checked" [ngModelOptions]="{standalone: true}"> 
-                                                            <label class="custom-control-label" for="checkbox-{{i}}">{{item.dia}}</label>
-                                                        </div>                                                                       
-                                                    </div>                                             
-                                                </div>                                     
+                                        <div class="col-sm-10 offset-1">
+                                            <label class="label-title-s" for="nombre_plan">Días de Entregas:</label>  
+                                                <div class="row">
+                                                    <div class="col-sm-4" *ngFor="let item of day; let i=index">   
+                                                        <div class="form-group content-form">                                                                 
+                                                                <div class="custom-control custom-checkbox">
+                                                                    <input type="checkbox" class="custom-control-input" id="checkbox-{{i}}"  [(ngModel)]="item.checked" [ngModelOptions]="{standalone: true}"> 
+                                                                    <label class="custom-control-label" for="checkbox-{{i}}">{{item.dia}}</label>
+                                                                </div>                                                                       
+                                                            </div>                                             
+                                                     </div>      
+                                                </div>                                
                                          </div>  
                                       
                                     </div>
@@ -110,8 +122,11 @@
                      </div>
                 </div>
             </div>   
-         </div>   
+         </div>  
     </div>
 </div>   
+
+
+
 
 

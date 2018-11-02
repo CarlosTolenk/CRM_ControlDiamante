@@ -8,6 +8,7 @@ import { LoteriaComponent } from './loteria/loteria.component';
 import { MensajeComponent } from './mensaje/mensaje.component';
 import { PlaneComponent } from './plane/plane.component';
 import { EditarPlaneComponent } from './plane/editar-planes/editar-planes.component';
+import { AgregarPlanComponent } from './plane/agregar-plan/agregar-plan.component';
 import { ChatComponent } from './chat/chat.component';
 
 export const AppsRoutes: Routes = [
@@ -44,6 +45,14 @@ export const AppsRoutes: Routes = [
         data: {
           title: 'Controlador de Planes',
           urls: [{ title: 'Dashboard', url: '/dashboard' }, { title: 'Planes' }]
+        }
+      },
+      {
+        path: 'plane/add',
+        component: AgregarPlanComponent,
+        data: {
+          title: 'Controlador de Planes',
+          urls: [{ title: 'Dashboard', url: '/dashboard' }, { title: 'Crear Nuevo Plan' }]
         }
       },
       {

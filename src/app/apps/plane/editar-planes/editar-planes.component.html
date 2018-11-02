@@ -1,11 +1,3 @@
-<!-- <a href="javascript:void(0)" (click)="goBack()">
-    <-Back
-</a>
-
-<h1>HOLAAA <span>{{_idPlan}}</span></h1>
-<h2 *ngIf="item">{{item.nombre_plan}}</h2>
-<h2 *ngIf="item"> {{item.precio}}</h2>
-<h2 *ngIf="item">{{item.fecha_publicacion}}</h2> -->
 <div class="row arrow-left">
         <button class="btn btn-info waves-effect waves-light" (click)="goBack()"><span class="btn-label"><i class="fa fa-arrow-left"></i></span>Volver</button>
 </div>
@@ -40,7 +32,7 @@
                                             <div class="p-9">                                                               
                                                 <div class="form-group content-form">                                                 
                                                     <label class="label-title" for="nombre_plan">Nombre:</label>                            
-                                                    <input type="text" id="nombre_plan" class="form-control"  [(ngModel)]="item.nombre_plan" #nombre_plan="ngModel" [ngModelOptions]="{standalone: true}">
+                                                    <input type="text" id="nombre_plan" class="form-control"  [(ngModel)]="item.nombre_plan" #nombre_plan="ngModel" name="nombre_plan">
                                                 </div>
                                             </div>
                                         </div>
@@ -48,7 +40,7 @@
                                             <div class="p-9">                                                               
                                                 <div class="form-group content-form">                                                 
                                                     <label class="label-title" for="nombre_plan">Mensajes:</label>                            
-                                                    <input type="text" id="nombre_plan" class="form-control"  [(ngModel)]="item.cantidad_mensaje" #nombre_plan="ngModel" [ngModelOptions]="{standalone: true}">
+                                                    <input type="text" id="nombre_plan" class="form-control"  [(ngModel)]="item.cantidad_mensaje" #nombre_plan="ngModel" name="cantidad_mensaje">
                                                 </div>
                                             </div>
                                         </div>
@@ -56,7 +48,7 @@
                                             <div class="p-9">                                                               
                                                 <div class="form-group content-form">                                                 
                                                     <label class="label-title" for="nombre_plan">Números:</label>                            
-                                                    <input type="text" id="nombre_plan" class="form-control"  [(ngModel)]="item.cantidad_numero" #nombre_plan="ngModel" [ngModelOptions]="{standalone: true}">
+                                                    <input type="text" id="nombre_plan" class="form-control"  [(ngModel)]="item.cantidad_numero" #nombre_plan="ngModel" name="cantidad_numero">
                                                 </div>
                                             </div>
                                         </div>
@@ -64,7 +56,7 @@
                                             <div class="p-9">                                                               
                                                 <div class="form-group content-form">                                                 
                                                     <label class="label-title" for="nombre_plan">Loterias:</label>                            
-                                                    <input type="text" id="nombre_plan" class="form-control"  [(ngModel)]="item.loterias" #nombre_plan="ngModel" [ngModelOptions]="{standalone: true}">
+                                                    <input type="text" id="nombre_plan" class="form-control"  [(ngModel)]="item.loterias" #nombre_plan="ngModel" name="loterias">
                                                 </div>
                                             </div>
                                         </div>
@@ -72,7 +64,7 @@
                                             <div class="p-9">                                                               
                                                 <div class="form-group content-form">                                                 
                                                     <label class="label-title" for="nombre_plan">Duración:</label>                            
-                                                    <input type="text" id="nombre_plan" class="form-control"  [(ngModel)]="item.duracion" #nombre_plan="ngModel" [ngModelOptions]="{standalone: true}">
+                                                    <input type="text" id="nombre_plan" class="form-control"  [(ngModel)]="item.duracion" #nombre_plan="ngModel" name="duracion">
                                                 </div>
                                             </div>
                                         </div>
@@ -80,7 +72,7 @@
                                             <div class="p-9">                                                               
                                                 <div class="form-group content-form">                                                 
                                                     <label class="label-title" for="nombre_plan">Precio:</label>                            
-                                                    <input type="text" id="nombre_plan" class="form-control"  [(ngModel)]="item.precio" #nombre_plan="ngModel" [ngModelOptions]="{standalone: true}">
+                                                    <input type="text" id="nombre_plan" class="form-control"  [(ngModel)]="item.precio" #nombre_plan="ngModel" name="precio">
                                                 </div>
                                             </div>
                                         </div>
@@ -88,19 +80,11 @@
                                             <div class="p-9">                                                               
                                                 <div class="form-group content-form">                                                 
                                                     <label class="label-title" for="nombre_plan">Efectividad:</label>                            
-                                                    <textarea class="form-control" [(ngModel)]='item.efectividad' rows="5" cols="120"  #efectividad="ngModel" [ngModelOptions]="{standalone: true}">                             
+                                                    <textarea class="form-control" [(ngModel)]='item.efectividad' rows="5" cols="120"  #efectividad="ngModel" name="efectividad">                             
                                                     </textarea>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <!-- <div class="col-sm-10">
-                                            <div class="p-10">                                                               
-                                                <div class="form-group content-form">                                                 
-                                                    <label class="label-title" for="nombre_plan">Entregas:</label>                            
-                                                    <input type="checkbox" [(ngModel)]="item.dias_entreg" [checked]="true" #entregas="ngModel" [ngModelOptions]="{standalone: true}">                                                  
-                                                </div>
-                                            </div>
-                                        </div> -->
+                                        </div>                            
                                         <div class="col-sm-10 offset-1">
                                             <label class="label-title-s" for="nombre_plan">Días de Entregas:</label>  
                                                 <div class="row">
@@ -113,10 +97,9 @@
                                                             </div>                                             
                                                      </div>      
                                                 </div>                                
-                                         </div>  
-                                      
+                                         </div>                                        
                                     </div>
-                                <button class="btn btn-block btn-info" (click)="onSubmit(item)">Actualizar</button>
+                                <button class="btn btn-block btn-info" (click)="onSubmit()">Actualizar</button>
                             </form>
                         </div>
                      </div>

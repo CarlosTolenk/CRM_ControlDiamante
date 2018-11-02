@@ -24,6 +24,8 @@ export class PlaneComponent implements OnInit {
    closeResult: string;
    //Objects
    detailPlan: Object;
+   //
+   seleccionIdDelete:string;
 
   constructor(
     private readonly db: AngularFirestore,
@@ -80,8 +82,19 @@ export class PlaneComponent implements OnInit {
       reason => {
         this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
       }
-    ); 
-  
+    );   
+  }
+
+  ViewdeletePlan(content, item){
+    this.seleccionIdDelete = item.id;
+    this.modalService.open(content).result.then(
+      result => {
+        this.closeResult = `Closed with: ${result}`;
+      },
+      reason => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      }
+    );  
   }
 
   open(content) {
@@ -101,6 +114,16 @@ export class PlaneComponent implements OnInit {
   editarPlan(item){
     // console.log(item);
     this.router.navigate(['/apps/plane/', item.id]);
+  }
+
+  addPlan(){
+    this.router.navigate(['/apps/plane/add']);
+  }
+
+  deletePlan(){
+    console.log(this.seleccionIdDelete);
+    console.log("Eliminando");
+    this._planesService.deletePlan(this.seleccionIdDelete);
   }
 
 

@@ -7,6 +7,9 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { DragulaModule } from 'ng2-dragula/ng2-dragula';
 import { QuillModule } from 'ngx-quill';
 import { ToastrModule } from 'ngx-toastr';
+import { NgxMaskModule } from 'ngx-mask'
+import { CurrencyMaskModule } from "ng2-currency-mask";
+
 
 import { AppsRoutes } from './apps.routing';
 import { EmailComponent } from './email/email.component';
@@ -18,7 +21,8 @@ import { MensajeComponent } from './mensaje/mensaje.component';
 import { PlaneComponent } from './plane/plane.component';
 import { ChatComponent } from './chat/chat.component';
 import { EditarPlaneComponent } from './plane/editar-planes/editar-planes.component';
-import {ProgressBarModule} from "angular-progress-bar"
+import { ProgressBarModule} from "angular-progress-bar";
+import { AgregarPlanComponent } from './plane/agregar-plan/agregar-plan.component'
 
 
 @NgModule({
@@ -32,7 +36,8 @@ import {ProgressBarModule} from "angular-progress-bar"
     QuillModule,
     ProgressBarModule,
     DragulaModule,
-    
+    CurrencyMaskModule,
+    NgxMaskModule.forRoot(),
     RouterModule.forChild(AppsRoutes)
   ],
   declarations: [
@@ -44,7 +49,8 @@ import {ProgressBarModule} from "angular-progress-bar"
     MensajeComponent,
     PlaneComponent,
     ChatComponent,
-    EditarPlaneComponent
+    EditarPlaneComponent,
+    AgregarPlanComponent
   ]
 })
 export class AppsModule {}

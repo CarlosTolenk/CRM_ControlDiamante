@@ -69,11 +69,6 @@ export class LoteriaComponent implements OnInit {
         return data;
       }))
     );  
-    
-    
-
-
-
    }
 
   ngOnInit() {

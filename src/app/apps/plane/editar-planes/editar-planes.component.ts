@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, DoCheck } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation,  } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { Router, ActivatedRoute } from "@angular/router";
 import { Observable } from 'rxjs';
@@ -15,16 +15,16 @@ import { PlanesService } from '../../../services/planes.service';
 @Component({
   selector: 'app-edit-plan',
   templateUrl: './editar-planes.component.html',
-  providers: [ToastrService],
+  providers: [ToastrService, PlanesService],
   styleUrls: ['./editar-planes.component.css']
 })
-export class EditarPlaneComponent implements OnInit, DoCheck {
+export class EditarPlaneComponent implements OnInit {
 
    //Plane
    public _idPlan: string;
    public item: any;
    public day = [
-    {dia: 'Lunes', checked: true},
+    {dia: 'Lunes', checked: false},
     {dia: 'Martes', checked: false},
     {dia: 'Miércoles', checked: false},
     {dia: 'Jueves', checked: false},
@@ -54,34 +54,48 @@ export class EditarPlaneComponent implements OnInit, DoCheck {
   ngOnInit() {
     this.oneTime = true;
     this._planesService.getPlan(this._idPlan).subscribe((planSnapshot) => {
-      this.item = planSnapshot.payload.data();        
-    });     
-  }
-  ngDoCheck(){
-    // console.log(this.item);
-    if(this.oneTime){
-      if(this.item){
-        for(let i=0; i<this.item.dias_entreg.length; i++){
-          for(let j=0; j<this.day.length; j++){
-            let value = this.day[j].dia.charAt(0) + this.day[j].dia.charAt(1);
-            // console.log(value)
-            if(this.item.dias_entreg[i] == this.day[j].dia.charAt(0)){
-              this.day[j].checked = true;
-              // console.log(this.day[j].dia);
-            }else if(this.item.dias_entreg[i] == value) {
-              this.day[j].checked = true;
-              // console.log(this.day[j].dia);
-            }
+      this.item = planSnapshot.payload.data();  
+      for(let i=0; i<this.item.dias_entreg.length; i++){
+        for(let j=0; j<this.day.length; j++){
+          let value = this.day[j].dia.charAt(0) + this.day[j].dia.charAt(1);
+          // console.log(value)
+          if(this.item.dias_entreg[i] == this.day[j].dia.charAt(0)){
+            this.day[j].checked = true;
+            // console.log(this.day[j].dia);
+          }else if(this.item.dias_entreg[i] == value) {
+            this.day[j].checked = true;
+            // console.log(this.day[j].dia);
           }
         }
-      }
-    }
-
-    
-    // console.log(this.day);
-
+      }      
+    });   
 
   }
+  
+  
+    
+
+  // ngDoCheck(){
+  //   // console.log(this.item);
+    
+  //   if(this.oneTime){
+  //     if(this.item){
+  //       for(let i=0; i<this.item.dias_entreg.length; i++){
+  //         for(let j=0; j<this.day.length; j++){
+  //           let value = this.day[j].dia.charAt(0) + this.day[j].dia.charAt(1);
+  //           // console.log(value)
+  //           if(this.item.dias_entreg[i] == this.day[j].dia.charAt(0)){
+  //             this.day[j].checked = true;
+  //             // console.log(this.day[j].dia);
+  //           }else if(this.item.dias_entreg[i] == value) {
+  //             this.day[j].checked = true;
+  //             // console.log(this.day[j].dia);
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
 
   goBack() { 
     this.location.back();
@@ -89,6 +103,8 @@ export class EditarPlaneComponent implements OnInit, DoCheck {
   }
 
   onSubmit(){
+    console.log("Actualizar")
+    console.log(this.day);
     this.oneTime = false;
     this.item.dias_entreg = [];  
     let index = 0;
@@ -106,6 +122,7 @@ export class EditarPlaneComponent implements OnInit, DoCheck {
 
     this._planesService.updatePlan(this.item.id, this.item);  
     this.toastr.success('Plan editado correctamente', 'Completada!');      
+   
   
   }
 

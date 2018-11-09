@@ -22,6 +22,35 @@
   padding: 10px;
 }
 
+.lotery__container{
+  display: flex;  
+  align-content: center;
+  align-items: center;
+}
+
+.lotery__items:nth-child(1){
+  order: 5;
+ flex-wrap: nowrap;
+}
+
+.lotery__items:nth-child(2){
+  order: 6
+}
+
+.lotery__items:nth-child(3){
+  order: 10
+}
+
+.lotery__items:nth-child(4){
+  order: 7
+}
+
+.lotery__items:nth-child(5){
+  order: 8
+}
+
+
+
 
 
 /* Form */

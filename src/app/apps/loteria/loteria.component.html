@@ -5,8 +5,8 @@
 </div>
    
 <!-- Todas las loterias -->
-<div class="row">
-  <div class="col-lg-4" *ngFor="let item of items | async ">
+<div class="row lotery__container">
+  <div class="col-lg-4 lotery__items" *ngFor="let item of items | async ">
       <!-- Loteria Normal -->
     <div class="card" *ngIf="item.tipo === 'normal'">
         <div class="card-body shadow">
@@ -117,7 +117,7 @@
                                     </div>
                                 </div>
                                 </div>
-                            <div class="col-sm-4" *ngIf="item.numeros[5] " >
+                            <div class="col-sm-4" *ngIf="item.numeros[5] || item.nombre == 'Mega Lotto' || item.nombre == 'Loto Leidsa' || item.nombre == 'Loto Real' " >
                                 <div class="p-10">
                                     <h6 class="m-b-0">Números 6</h6>                     
                                     <div class="form-group">                              
@@ -125,7 +125,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-4 offset-4" *ngIf="item.nombre == 'Loto Leidsa' ">
+                            <div class="col-sm-4 offset-md-4" *ngIf="item.nombre == 'Loto Leidsa' ">
                                 <div class="p-10">
                                     <h6 class="m-b-0">Números +</h6>                     
                                     <div class="form-group">                              

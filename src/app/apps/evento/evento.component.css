@@ -1,0 +1,120 @@
+.img-thumbnail {
+    padding: 0.25rem;
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+    max-width: 100%!important;
+    height: auto;
+}
+
+.contain-img{ 
+    max-width: 5rem;
+    height: auto;
+}
+
+.d-flex{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.title-table{
+    text-align: center;
+}
+
+.group-button button{
+   margin-left: 0.5rem;
+}
+
+.accion-btn{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+}
+
+.accion-btn button{
+    margin-left: 0.25rem;
+}
+
+.text-align{
+    display: flex; 
+    align-content: center;
+    text-align: center;
+    align-self: center;
+    margin-top: 2rem;
+}
+
+.dark-modal .modal-content {
+    background-color: #009efb;
+    color: white;
+}
+
+.dark-modal .close {
+    color: white;
+}
+
+.title-modal-plan{
+    font-weight: 600!important;
+    font-size: 1.2rem;
+}
+
+.title-modal{
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+.info-modal{
+    font-weight: 400;
+    margin-left: 0.5rem;
+    font-size: 1rem;
+}
+
+.modal-footer-s{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    justify-content: space-between;   
+    max-height: 5rem;
+    border-top: 1px solid rgb(223, 220, 220); 
+    padding: 2rem;
+}
+
+
+
+.stats{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;  
+    align-items: center;
+    margin-top: 1rem; 
+}
+
+.stats .title-modal{
+    margin-right: 1rem;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .modal-footer-s{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        align-items: center;
+        justify-content: space-between;   
+        max-height: 15rem;
+        border-top: 1px solid rgb(223, 220, 220); 
+        /* padding: 2rem; */
+    }
+
+    .stats{
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1rem;
+ 
+    }
+}

@@ -15,18 +15,18 @@
                     <div class="col-lg-4 offset-1  ">
                            
                       <!-- not_info.png -->
-                        <div class="container"  [@visibility]="statusImage">
-                            <img class="image" src="assets/images/not-available.png" alt="no-info" *ngIf="!item.imagen_url"> 
-                            <img class="image" [src]="item.imagen_url" alt="{{item.nombre_plan}}" *ngIf="item.imagen_url"> 
+                        <div class="container" [@visibility]="statusImage">
+                            <img class="image" src="assets/images/not-available.png" alt="no-info" *ngIf="!item.image_url"> 
+                            <img class="image" [src]="item.image_url" alt="{{item.nombre_evento}}" *ngIf="item.image_url"> 
                             <div class="middle">
                                 <div class="upload-btn-wrapper">
-                                    <button type="button" class="btn btn-info btn-circle btn-xl"><i class="fa fa-upload"></i></button>
+                                        <button type="button" class="btn btn-info btn-circle btn-xl"><i class="fa fa-upload"></i></button>
                                     <input type="file" name="myfile" (change)="uploadFile($event)" required/>
                                 </div>  
                             </div>                             
                         </div>
                         <div  [@visibility]="statusTitle">
-                            <h5 class="text-danger">*Debes ingresar el nombre del plan para poder habilitar la subida de imagen</h5>
+                            <h5 class="text-danger">*Debes ingresar el nombre del evento para poder habilitar la subida de imagen</h5>
                         </div>
                         <progress-bar [progress]="uploadPercent | async" [color-degraded]="{'0': '#0091F0',  '15': '#0091F0', '25': '#0091F0', '95': '#00B01D'}"></progress-bar>
                        
@@ -37,75 +37,64 @@
                                     <div class="col-sm-10">
                                         <div class="p-9">                                                               
                                             <div class="form-group content-form">                                                 
-                                                <label class="label-title" for="nombre_plan">Nombre:</label>                            
-                                                <input type="text" id="nombre_plan" class="form-control" placeholder="Diamante Gold" [(ngModel)]="item.nombre_plan" #nombre_plan="ngModel" name="nombre_plan"  required/>
+                                                <label class="label-title" for="nombre_evento">Nombre:</label>                            
+                                                <input type="text" id="nombre_evento" class="form-control" placeholder="Diamante Gold Evento" [(ngModel)]="item.nombre_evento" #nombre_evento="ngModel" name="nombre_evento"  required/>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-sm-10">
                                         <div class="p-9">                                                               
                                             <div class="form-group content-form">                                                 
-                                                <label class="label-title" for="nombre_plan">Mensajes:</label>                            
-                                                <input type="text" id="nombre_plan" class="form-control" placeholder="2 Mensajes"  [(ngModel)]="item.cantidad_mensaje" #cantidad_mensaje="ngModel" name="cantidad_mensaje" required  mask="0" sufix=" Mensajes">
+                                                <label class="label-title" for="fecha_evento">Fecha:</label>                            
+                                                <input type="date" id="fecha_evento" class="form-control" placeholder="12 Dic"  data-date-format="DD MMMM YYYY" [(ngModel)]="item.fecha_evento" #fecha_evento="ngModel" name="fecha_evento" required  >
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <div class="p-9">                                                               
+                                            <div class="form-group content-form">                                                 
+                                                <label class="label-title" for="lugar_evento">Lugar:</label>                            
+                                                <input type="text" id="lugar_evento" class="form-control" placeholder="Árena del Cibao"  [(ngModel)]="item.lugar" #lugar_evento="ngModel" name="lugar_evento" required>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-sm-10">
                                         <div class="p-9">                                                               
                                             <div class="form-group content-form">                                                 
-                                                <label class="label-title" for="nombre_plan">Números:</label>                            
-                                                <input type="text" id="nombre_plan" class="form-control" placeholder="2 Números"  [(ngModel)]="item.cantidad_numero" #cantidad_numero="ngModel" name="cantidad_numero" required>
+                                                <label class="label-title" for="ciudad_evento">Ciudad:</label>                            
+                                                <input type="text" id="ciudad_evento" class="form-control" placeholder="Santiago"  [(ngModel)]="item.ciudad" #ciudad_evento="ngModel" name="ciudad_evento" required >
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-sm-10">
                                         <div class="p-9">                                                               
                                             <div class="form-group content-form">                                                 
-                                                <label class="label-title" for="nombre_plan">Loterias:</label>                            
-                                                <input type="text" id="nombre_plan" class="form-control" placeholder="1 Lotería"  [(ngModel)]="item.loterias" #loterias="ngModel" name="loterias" required mask="0" sufix=" Lotería">
+                                                <label class="label-title" for="hora_evento">Hora:</label>                            
+                                                <input type="text" id="hora_evento" class="form-control" placeholder="9am - 12pm"  [(ngModel)]="item.hora" #hora_evento="ngModel" name="hora_evento" required >
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-sm-10">
                                         <div class="p-9">                                                               
                                             <div class="form-group content-form">                                                 
-                                                <label class="label-title" for="nombre_plan">Duración:</label>                            
-                                                <input type="text" id="nombre_plan" class="form-control" placeholder="15 días"  [(ngModel)]="item.duracion" #duracion="ngModel" name="duracion" required mask="00" sufix=" días">
+                                                <label class="label-title" for="precio_evento">Precio:</label>                            
+                                                <input type="text" id="precio_evento" class="form-control" placeholder="RD$5,000.00"  [(ngModel)]="item.precio" #precio_evento="ngModel" name="precio_evento" required currencyMask  [options]="{ align: 'left',  prefix: 'RD$ ', thousands: ',', decimal: '.'}">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-sm-10">
                                         <div class="p-9">                                                               
                                             <div class="form-group content-form">                                                 
-                                                <label class="label-title" for="nombre_plan">Precio:</label>                            
-                                                <input type="text" id="nombre_plan" class="form-control" placeholder="RD$5,000.00"  [(ngModel)]="item.precio" #precio="ngModel" name="precio" required currencyMask  [options]="{ align: 'left',  prefix: 'RD$ ', thousands: ',', decimal: '.'}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-10">
-                                        <div class="p-9">                                                               
-                                            <div class="form-group content-form">                                                 
-                                                <label class="label-title" for="nombre_plan">Efectividad:</label>                            
-                                                <textarea class="form-control" [(ngModel)]='item.efectividad' placeholder="La Efectividad es..."  [(ngModel)]="item.efectividad" rows="5" cols="120"  #efectividad="ngModel" name="efectividad" >                             
+                                                <label class="label-title" for="descripcion_evento">Descripción:</label>                            
+                                                <textarea class="form-control"  placeholder="La descripción del evento..."  [(ngModel)]="item.descripcion" rows="5" cols="120"  #descripcion_evento="ngModel" name="descripcion_evento" >                             
                                                 </textarea>
                                             </div>
                                         </div>
-                                    </div>                            
-                                    <div class="col-sm-10 offset-1">
-                                        <label class="label-title-s" for="nombre_plan">Días de Entregas:</label>  
-                                            <div class="row">
-                                                <div class="col-sm-4" *ngFor="let item of day; let i=index">   
-                                                    <div class="form-group content-form">                                                                 
-                                                            <div class="custom-control custom-checkbox">
-                                                                <input type="checkbox" class="custom-control-input" id="checkbox-{{i}}"  [(ngModel)]="item.checked" name="dias" required> 
-                                                                <label class="custom-control-label" for="checkbox-{{i}}">{{item.dia}}</label>
-                                                            </div>                                                                       
-                                                     </div>                                             
-                                             </div>      
-                                        </div>                                
-                                    </div>                                        
+                                    </div> 
                                 </div>
-                            <button class="btn btn-block btn-info" type="submit" [disabled]="!myForm.form.valid || !item.imagen_url" >Crear Nuevo Plan</button>
+                            <button class="btn btn-block btn-info" type="submit" [disabled]="!myForm.form.valid || !item.image_url" >Crear Nuevo Evento</button>
                         </form>
                     </div>           
                 </div>

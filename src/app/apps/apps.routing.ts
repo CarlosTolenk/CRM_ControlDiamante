@@ -9,6 +9,10 @@ import { MensajeComponent } from './mensaje/mensaje.component';
 import { PlaneComponent } from './plane/plane.component';
 import { EditarPlaneComponent } from './plane/editar-planes/editar-planes.component';
 import { AgregarPlanComponent } from './plane/agregar-plan/agregar-plan.component';
+import { AgregarEventoComponent } from './evento/agregar-evento/agregar-evento.component';
+import { EditarEventoComponent } from './evento/editar-evento/editar-evento.component';
+
+import { UserRolesComponent } from './user-roles/user-roles.component';
 import { ChatComponent } from './chat/chat.component';
 
 export const AppsRoutes: Routes = [
@@ -43,7 +47,7 @@ export const AppsRoutes: Routes = [
         path: 'plane',
         component: PlaneComponent,
         data: {
-          title: 'Controlador de Planes',
+          title: 'Controlador de Planes y Eventos',
           urls: [{ title: 'Dashboard', url: '/dashboard' }, { title: 'Planes' }]
         }
       },
@@ -64,12 +68,36 @@ export const AppsRoutes: Routes = [
         }
       },
       {
+        path: 'evento/add',
+        component: AgregarEventoComponent,
+        data: {
+          title: 'Controlador de Eventos',
+          urls: [{ title: 'Dashboard', url: '/dashboard' }, { title: 'Crear Nuevo Evento' }]
+        }
+      },
+      {
+        path: 'evento/:id',
+        component: EditarEventoComponent,
+        data: {
+          title: 'Editar Evento',
+          urls: [{ title: 'Dashboard', url: '/dashboard' }, { title: 'Editar Evento' }]
+        }
+      },
+      {
         path: 'chat',
         component: ChatComponent,
         data: {
           title: 'Sistema de Chat',
           urls: [{ title: 'Dashboard', url: '/dashboard' }, { title: 'Chat' }]
-        }
+        },        
+      },
+      {
+        path: 'usuarios',
+        component: UserRolesComponent,
+        data: {
+          title: 'Sistema de Usuarios y Roles',
+          urls: [{ title: 'Dashboard', url: '/dashboard' }, { title: 'Usuarios' }]
+        },        
       }
     ]
   }

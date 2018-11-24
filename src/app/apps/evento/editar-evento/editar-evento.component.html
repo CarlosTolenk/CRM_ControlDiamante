@@ -1,0 +1,106 @@
+<div class="row arrow-left">
+    <button class="btn btn-info waves-effect waves-light" (click)="goBack()"><span class="btn-label"><i class="fa fa-arrow-left"></i></span>Volver</button>
+</div>
+<div class="row" *ngIf="item">   
+    <div class="col-lg-12">
+        <div class="card">               
+            <div class="card-body shadow">
+                <div class="d-flex">                 
+                    <div class="pull-right">
+                        <!-- <button class="btn btn-info waves-effect waves-light" type="button"><span class="btn-label"><i class="fa fa-plus"></i></span>Agregar</button> -->
+                    </div>                                  
+                </div>                       
+                <div class="stats-bar">   
+                    <div class="row">
+                        <div class="col-lg-4 offset-1  ">
+                            <div class="container">
+                                <img class="image" [src]="item.image_url" alt="{{item.nombre_evento}}"> 
+                                <div class="middle">
+                                    <div class="upload-btn-wrapper">
+                                            <button type="button" class="btn btn-info btn-circle btn-xl"><i class="fa fa-upload"></i></button>
+                                        <input type="file" name="myfile" (change)="uploadFile($event)"/>
+                                    </div>  
+                                </div>                             
+                            </div>
+                            <progress-bar [progress]="uploadPercent | async" [color-degraded]="{'0': '#0091F0',  '15': '#0091F0', '25': '#0091F0', '95': '#00B01D'}"></progress-bar>
+                        
+                        </div>  
+                        <div class="col-lg-6">
+                            <form class="form-material m-t-40"  #formItem="ngForm" >
+                                    <div class="row text-center">
+                                        <div class="col-sm-10">
+                                            <div class="p-9">                                                               
+                                                <div class="form-group content-form">                                                 
+                                                    <label class="label-title" for="nombre_plan">Nombre:</label>                            
+                                                    <input type="text" id="nombre_plan" class="form-control"  [(ngModel)]="item.nombre_evento" #nombre_plan="ngModel" name="nombre_plan">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-10">
+                                            <div class="p-9">                                                               
+                                                <div class="form-group content-form">                                                 
+                                                    <label class="label-title" for="nombre_plan">Fecha:</label>                            
+                                                    <input type="text" id="nombre_plan" class="form-control"  [(ngModel)]="item.fecha_evento" #nombre_plan="ngModel" name="cantidad_mensaje">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-10">
+                                            <div class="p-9">                                                               
+                                                <div class="form-group content-form">                                                 
+                                                    <label class="label-title" for="nombre_plan">Ciudad:</label>                            
+                                                    <input type="text" id="nombre_plan" class="form-control"  [(ngModel)]="item.ciudad" #nombre_plan="ngModel" name="cantidad_numero">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-10">
+                                            <div class="p-9">                                                               
+                                                <div class="form-group content-form">                                                 
+                                                    <label class="label-title" for="nombre_plan">Hora:</label>                            
+                                                    <input type="text" id="nombre_plan" class="form-control"  [(ngModel)]="item.hora" #nombre_plan="ngModel" name="loterias">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-10">
+                                            <div class="p-9">                                                               
+                                                <div class="form-group content-form">                                                 
+                                                    <label class="label-title" for="nombre_plan">Lugar:</label>                            
+                                                    <input type="text" id="nombre_plan" class="form-control"  [(ngModel)]="item.lugar" #nombre_plan="ngModel" name="duracion">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-10">
+                                            <div class="p-9">                                                               
+                                                <div class="form-group content-form">                                                 
+                                                    <label class="label-title" for="nombre_plan">Precio:</label>                            
+                                                    <input type="text" id="nombre_plan" class="form-control"  [(ngModel)]="item.precio" #nombre_plan="ngModel" name="precio">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-10">
+                                            <div class="p-9">                                                               
+                                                <div class="form-group content-form">                                                 
+                                                    <label class="label-title" for="nombre_plan">Descripción:</label>                            
+                                                    <textarea class="form-control" [(ngModel)]='item.descripcion' rows="5" cols="120"  #efectividad="ngModel" name="efectividad">                             
+                                                    </textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <button class="btn btn-block btn-info" (click)="onSubmit()">Actualizar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>   
+        </div>  
+    </div>
+</div>   
+
+
+
+
+
+
+
+
+

@@ -1,5 +1,6 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, OnInit, DoCheck } from '@angular/core';
 import { NgbProgressbarConfig } from '@ng-bootstrap/ng-bootstrap';
+import { AuthService } from '../../services/auth.service';
 
 declare var require: any;
 
@@ -9,10 +10,14 @@ const data: any = require('./data.json');
   templateUrl: './dashboard2.component.html',
   styleUrls: ['./dashboard2.component.css']
 })
-export class Dashboard2Component implements AfterViewInit {
+export class Dashboard2Component implements AfterViewInit, DoCheck {
   subtitle: string;
-  constructor() {
+  public user;
+  constructor(
+    public authService: AuthService, 
+  ) {
     this.subtitle = 'This is some text within a card block.';
+ 
   }
   // This is for the dashboar line chart
   // lineChart
@@ -142,5 +147,15 @@ export class Dashboard2Component implements AfterViewInit {
   public barChartData: any[] = [{ data: [65, 59, 80, 81, 56, 55, 40], label: 'Iphone 8' }, { data: [28, 48, 40, 19, 86, 27, 90], label: 'Iphone X' },  { data: [18, 45, 25,19, 26, 107, 86], label: 'Iphone 5' },  { data: [28, 48, 40, 19, 86, 27, 90], label: 'Iphone X' }];
   public barChartColors: Array<any> = [{ backgroundColor: '#06d79c' }, { backgroundColor: '#398bf7' }, { backgroundColor: '#A88bf7' }, { backgroundColor: '#c2c40f' }];
 
+  
+  ngOnInit() {
+    this.authService.getStatus();
+  }
+
+  ngDoCheck(){
+    this.user = JSON.parse(localStorage.getItem('user'));
+  }
+ 
+  
   ngAfterViewInit() {}
 }

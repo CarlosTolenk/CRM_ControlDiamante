@@ -1,9 +1,11 @@
-import { Component, AfterViewInit, EventEmitter, Output } from '@angular/core';
+import { Component, AfterViewInit, EventEmitter, Output, OnInit, DoCheck } from '@angular/core';
 import { NgbModal, ModalDismissReasons, NgbPanelChangeEvent, NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
-
+import { AngularFireStorage } from '@angular/fire/storage';
+import { finalize } from 'rxjs/operators';
+import { Observable } from 'rxjs/Observable';
 
 
 declare var $: any;
@@ -11,8 +13,9 @@ declare var $: any;
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
   providers: [AuthService],
+  styleUrls: ['./navigation.component.css'],
 })
-export class NavigationComponent implements AfterViewInit {
+export class NavigationComponent implements  OnInit, DoCheck, AfterViewInit {
   @Output() toggleSidebar = new EventEmitter<void>();
 
   public config: PerfectScrollbarConfigInterface = {};
@@ -20,75 +23,31 @@ export class NavigationComponent implements AfterViewInit {
     private modalService: NgbModal,
     public authService: AuthService, 
     private router: Router, 
-    ) {}
+    private storage: AngularFireStorage,
+    ) {
+    }
 
   public showSearch = false;
+  public user;
 
-  // This is for Notifications
-  notifications: Object[] = [
-    {
-      round: 'round-danger',
-      icon: 'ti-link',
-      title: 'Luanch Admin',
-      subject: 'Just see the my new admin!',
-      time: '9:30 AM'
-    },
-    {
-      round: 'round-success',
-      icon: 'ti-calendar',
-      title: 'Event today',
-      subject: 'Just a reminder that you have event',
-      time: '9:10 AM'
-    },
-    {
-      round: 'round-info',
-      icon: 'ti-settings',
-      title: 'Settings',
-      subject: 'You can customize this template as you want',
-      time: '9:08 AM'
-    },
-    {
-      round: 'round-primary',
-      icon: 'ti-user',
-      title: 'Pavan kumar',
-      subject: 'Just see the my admin!',
-      time: '9:00 AM'
-    }
-  ];
+   //Upload
+   public porcentaje: number;
+   public uploadPercent: Observable<number>;
+   public downloadURL: Observable<string>;
+ 
+  ngOnInit(){
+    // this.user = JSON.parse(localStorage.getItem('user'));
+    // console.log(this.user);
+  }
 
-  // This is for Mymessages
-  mymessages: Object[] = [
-    {
-      useravatar: 'assets/images/users/1.jpg',
-      status: 'online',
-      from: 'Pavan kumar',
-      subject: 'Just see the my admin!',
-      time: '9:30 AM'
-    },
-    {
-      useravatar: 'assets/images/users/2.jpg',
-      status: 'busy',
-      from: 'Sonu Nigam',
-      subject: 'I have sung a song! See you at',
-      time: '9:10 AM'
-    },
-    {
-      useravatar: 'assets/images/users/2.jpg',
-      status: 'away',
-      from: 'Arijit Sinh',
-      subject: 'I am a singer!',
-      time: '9:08 AM'
-    },
-    {
-      useravatar: 'assets/images/users/4.jpg',
-      status: 'offline',
-      from: 'Pavan kumar',
-      subject: 'Just see the my admin!',
-      time: '9:00 AM'
-    }
-  ];
+  ngDoCheck(){
+    this.user = JSON.parse(localStorage.getItem('user'));
+  
+  } 
 
-  ngAfterViewInit() {}
+  ngAfterViewInit() {
+  
+  }
 
   onSignOut(){
     console.log("Cerrar Sesión");
@@ -96,4 +55,43 @@ export class NavigationComponent implements AfterViewInit {
     // this.toastr.success('Ha cerrado sesión correctamente', 'Completada!');  
     this.router.navigate(['authentication/login']);
   }
+
+  uploadFile(event) {
+    let fileName = `${this.user.uid}-${this.user.displayName}`;
+    const file = event.target.files[0];
+    const filePath = `Usuarios/${fileName.toLowerCase()}`;
+    console.log(filePath);
+    const fileRef = this.storage.ref(filePath);
+    const task = this.storage.upload(filePath, file);
+
+    // observe percentage changes
+    this.uploadPercent = task.percentageChanges();
+    this.uploadPercent.subscribe((data) =>{
+      this.porcentaje = data;
+    })
+    // get notified when the download URL is available
+    task.snapshotChanges().pipe(
+        finalize(() => {
+          this.downloadURL = fileRef.getDownloadURL();
+            this.downloadURL.subscribe((data) =>{
+           this.user.photoURL = data;        
+            this.authService.editUser(
+              this.user.email,
+              this.user.photoURL,
+              this.user.displayName,
+              this.user.role,
+              this.user.uid,
+            )
+            console.log(data + 'Lo tenemos toh');
+            localStorage.setItem('user', JSON.stringify(this.user));
+
+                 
+          })        
+        })
+     )
+    .subscribe()
+  }
+
+
+
 }

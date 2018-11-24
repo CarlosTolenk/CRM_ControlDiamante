@@ -62,7 +62,7 @@
                 <li>
                     <div class="message-center" [perfectScrollbar]="config">
                         <a href="javascript:void(0)" *ngFor="let mymessage of mymessages">
-                            <div class="user-img"> <img src="{{mymessage.useravatar}}" alt="user" class="img-circle" width="40"> 
+                            <div><img src="{{mymessage.useravatar}}" alt="user" class="user-img img-circle" width="40" height="40"> 
                                 <span class="profile-status {{mymessage.status}} pull-right"></span> 
                             </div>
                             <div class="mail-contnet">
@@ -93,22 +93,26 @@
     <!-- Profile -->
     <!-- ============================================================== -->
     <li class="nav-item dropdown" ngbDropdown placement="bottom-right">
-        <a ngbDropdownToggle class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/images/users/user-admin.png" alt="user" class="profile-pic" /></a>
+        <a ngbDropdownToggle class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{user.photoURL}}" alt="{{user.displayName}}" class="profile-pic" /></a>
         <div class="dropdown-menu animated slideInDown" ngbDropdownMenu>
             <ul class="dropdown-user">
                 <li>
                     <div class="dw-user-box">
-                        <div class="u-img"><img src="assets/images/users/admin.png" alt="user"></div>
+                        <div class="u-img"><img src="{{user.photoURL}}" alt="{{user.displayName}}"></div>
                         <div class="u-text">
-                            <h4>Control Diamante</h4>
-                            <p class="text-muted">staffcontroldiamante</p>
-                            <a href="javascript:void(0)" class="btn btn-rounded btn-danger btn-sm">Ver Perfil</a></div>
+                            <h4>{{user.displayName}}</h4>
+                            <p class="text-muted">{{user.email}}</p>
+                        </div>                    
+                    </div>
+                    <div>
+                        <label class="btn btn-rounded btn-danger btn-sm" for="my-avatar">Subir Imagen </label>
+                        <input class="inputfile" type="file" id="my-avatar" name="myfile" (change)="uploadFile($event)" />
                     </div>
                 </li>
-                <li role="separator" class="divider"></li>                  
+                <!-- <li role="separator" class="divider"></li>                  
                 <li><a href="javascript:void(0)"><i class="icon-bubble"></i> Chat</a></li>
                 <li role="separator" class="divider"></li>
-                <li><a href="javascript:void(0)"><i class="ti-settings"></i> Configuración</a></li>
+                <li><a href="javascript:void(0)"><i class="ti-settings"></i> Configuración</a></li> -->
                 <li role="separator" class="divider"></li>
                 <li><a  (click)="onSignOut()"><i class="fa fa-power-off"></i> Cerrar Sección</a></li>
             </ul>

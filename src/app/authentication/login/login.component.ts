@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
@@ -27,16 +27,14 @@ export class LoginComponent {
     )
    {}
 
+
+
   showRecoverForm() {
     this.loginform = !this.loginform;
     this.recoverform = !this.recoverform;
   }
 
   onLogin(){    
-    console.log(
-      `Usuario: ${this.email} Contraseña: ${this.password}`
-    )
-
     this.authService.loginWithEmail(this.email, this.password)
     .then(() =>{
       console.log("Login Completo");

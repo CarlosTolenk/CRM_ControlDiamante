@@ -20,15 +20,15 @@ import {
 
 //Services
 import { ToastrService } from 'ngx-toastr';
-import { PlanesService } from '../../../services/planes.service';
+import { EventoService } from '../../../services/evento.services';
 
 
 
 @Component({
-  selector: 'app-agregar-plan',
-  templateUrl: './agregar-plan.component.html',
-  providers: [ToastrService, PlanesService],
-  styleUrls: ['./agregar-plan.component.css'],
+  selector: 'app-agregar-evento',
+  templateUrl: './agregar-evento.component.html',
+  providers: [ToastrService, EventoService],
+  styleUrls: ['./agregar-evento.component.css'],
   animations: [
     trigger('visibility', [
       state('inactive', style({      
@@ -44,19 +44,11 @@ import { PlanesService } from '../../../services/planes.service';
     ])
   ]
 })
-export class AgregarPlanComponent implements OnInit, DoCheck {
+export class AgregarEventoComponent implements OnInit, DoCheck {
 
   public _idPlan: string;
   public item: any;
-  public day = [
-   {dia: 'Lunes', checked: false},
-   {dia: 'Martes', checked: false},
-   {dia: 'Miércoles', checked: false},
-   {dia: 'Jueves', checked: false},
-   {dia: 'Viernes', checked: false},
-   {dia: 'Sábado', checked: false},
-   {dia: 'Domingo', checked: false},    
- ];
+
   public showIsDay: any;
   public oneTime: boolean;
   public new_image: any = '';
@@ -72,7 +64,7 @@ export class AgregarPlanComponent implements OnInit, DoCheck {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private _planesService: PlanesService,
+    private _eventoService: EventoService,
     private location: Location,
     private storage: AngularFireStorage,
     private toastr: ToastrService,   
@@ -81,25 +73,19 @@ export class AgregarPlanComponent implements OnInit, DoCheck {
 
   ngOnInit() {
     this.statusTitle =  'active'; 
-    this.item = {
-      cantidad_mensaje: '',
-      cantidad_numero: '',
-      dias_entreg: [],
-      duracion: '',
-      imagen_url: '',
+    this.item = {   
+      ciudad: '',
+      hora: '',
+      image_url: '',
       key: '',
       id: '',
-      likes_recibidos: 0,
-      loterias: [],
-      nombre_plan: '',
-      precio: '',
-      total_shared: 0  , 
-      fecha_publicacion: ''
+      nombre_evento: '',
+      precio: '',    
     };
   }   
 
   ngDoCheck(){
-    if(this.item.nombre_plan === ''){
+    if(this.item.nombre_evento === ''){
       this.statusTitle =  'active';
       this.statusImage = 'inactive';
     }else{
@@ -115,29 +101,37 @@ export class AgregarPlanComponent implements OnInit, DoCheck {
 
   onSubmit(){
     this.formatingData();    
-    this._planesService.createPlan(this.item, this.item.id);
-    this.toastr.success('Plan se ha creado correctamente', 'Completada!');      
+    console.log(this.item);
+    this._eventoService.createEvento(this.item, this.item.id);
+    this.toastr.success('Evento se ha creado correctamente', 'Completada!');      
     this.router.navigate(['/apps/plane']);
   }
 
   formatingData(){  
-    this.item.cantidad_mensaje +=  ' Mensajes';
-    this.item.duracion += ' días';
-    this.item.loterias += ' Loterias';   
-    this.addDate();
+    // this.addDate();
+    this.formatingDate()
     this.uuidName(); 
     this.formattingPrecio();
-    this.diasEntrega();
-    console.log(this.item );
+    // this.diasEntrega();
+    // console.log(this.item );
   }
 
-  addDate(){   
-    let date = new Date();
-    let day = this.getDay(date.getDay());
-    let month = this.getMonth(date.getMonth());
-    let time = day +" "+ month;
-     this.item.fecha_publicacion = time;
+  formatingDate(){
+    console.log("Nueva Fecha" + this.item.fecha_evento);
+    let new_date = new Date(this.item.fecha_evento)
+    let day = new_date.getDate() + 1;
+    let month = this.getMonth(new_date.getMonth());
+    this.item.fecha_evento = `${day} ${month}`;
+
   }
+
+  // addDate(){   
+  //   let date = new Date();
+  //   let day = this.getDay(date.getDay());
+  //   let month = this.getMonth(date.getMonth());
+  //   let time = day +" "+ month;
+  //    this.item.fecha_publicacion = time;
+  // }
 
   getDay(day){
     if(day < 10){
@@ -166,7 +160,7 @@ export class AgregarPlanComponent implements OnInit, DoCheck {
 
   uuidName(){
     let uuid = UUID.UUID();
-    let name = this.item.nombre_plan.split(" ").join('_');
+    let name = this.item.nombre_evento.split(" ").join('_');
     this.item.id =  name.toLowerCase() + uuid.slice(0,7);    
     this.item.key = name.toLowerCase() + uuid.slice(0,7);
   }
@@ -190,25 +184,26 @@ export class AgregarPlanComponent implements OnInit, DoCheck {
     }
   }  
 
-  diasEntrega(){
-    let index = 0;
-    for(let i=0; i<this.day.length; i++){   
-      if(this.day[i].checked){       
-        if(this.day[i].dia == "Miércoles"){
-          this.item.dias_entreg[index] = this.day[i].dia.charAt(0) + this.day[i].dia.charAt(1);
-          index++;
-        }else{
-          this.item.dias_entreg[index] = this.day[i].dia.charAt(0);
-          index++;
-        }
-      }
-    }
-  }
+  // diasEntrega(){
+  //   let index = 0;
+  //   for(let i=0; i<this.day.length; i++){   
+  //     if(this.day[i].checked){       
+  //       if(this.day[i].dia == "Miércoles"){
+  //         this.item.dias_entreg[index] = this.day[i].dia.charAt(0) + this.day[i].dia.charAt(1);
+  //         index++;
+  //       }else{
+  //         this.item.dias_entreg[index] = this.day[i].dia.charAt(0);
+  //         index++;
+  //       }
+  //     }
+  //   }
+  // }
 
   uploadFile(event) {
-    let fileName = this.item.nombre_plan.replace(/ /g, "_");
+
+    let fileName = this.item.nombre_evento.replace(/ /g, "_");
     const file = event.target.files[0];
-    const filePath = `Planes/${fileName.toLowerCase()}`;
+    const filePath = `Eventos/${fileName.toLowerCase()}`;
     console.log(filePath);
     const fileRef = this.storage.ref(filePath);
     const task = this.storage.upload(filePath, file);
@@ -223,7 +218,7 @@ export class AgregarPlanComponent implements OnInit, DoCheck {
         finalize(() => {
           this.downloadURL = fileRef.getDownloadURL();
             this.downloadURL.subscribe((data) =>{
-            this.item.imagen_url= data;          
+            this.item.image_url= data;          
           })        
         })
      )

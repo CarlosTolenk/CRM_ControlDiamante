@@ -1,0 +1,174 @@
+<div class="row" >   
+  <div class="col-lg-12">
+      <div class="card">               
+          <div class="card-body shadow">
+              <div class="d-flex">
+                  <div class="">
+                      <h4 class="card-title m-b-5">
+                          <span class="lstick"></span>Usuarios Activos
+                      </h4>                                                          
+                  </div>  
+                  <div class="pull-right">
+                      <button class="btn btn-info waves-effect waves-light"  (click)="ModalAddUser(contentAdd)"  type="button"><span class="btn-label"><i class="fa fa-plus"></i></span>Agregar</button>                  
+                  </div>                                  
+              </div>                       
+              <div class="stats-bar">                
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>                             
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Imagen</th>
+                            <th scope="col">Role</th>                             
+                            <th scope="col">Acciones</th>                                           
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of items | async">                                                                         
+                                <td scope="row">                                                                             
+                                    <p class="text-align">{{item.displayName}}</p>
+                                </td>
+                                <td scope="row">                                                                             
+                                  <p class="text-align">{{item.email}}</p>                             
+                              </td>
+                                <td scope="row">        
+                                  <div class="contain-img">                             
+                                      <img class="img-thumbnail" src="{{item.photoURL}}" alt="{{item.displayName}}">
+                                  </div>                                   
+                                </td>
+                                <td scope="row">                                                                             
+                                    <p class="text-align">{{item.role}}</p>
+                                </td>                                    
+                            
+                                <td scope="row">
+                                  <div class="accion-btn">                                
+                                      <button type="button" class="btn btn-info btn-circle" (click)="ModalAddEdit(contentEdit, item)"><i class="fa fa-edit"></i></button>
+                                      <button type="button" class="btn btn-warning btn-circle" (click)="recoveryPassword(item)"><i class="fa fa-send"></i> </button>
+                                      <button type="button" class="btn btn-danger btn-circle" (click)="deleteUser(item)"><i class="fa fa-trash"></i> </button>
+                                  </div>                                  
+                                </td>                                            
+                            </tr>                       
+                        </tbody>
+                    </table>
+                </div>  
+            </div>
+         </div>
+      </div>
+  </div>
+ </div>
+
+ <!--********************************************************************* -->
+ <!--*************************** MODALS ********************************** -->
+  <!--********************************************************************* -->
+
+  <!-- ViewModalAdd User-->
+
+  <ng-template #contentAdd let-c="close" let-d="dismiss">
+      <div class="modal-header">
+          <h4 class="modal-title title-modal-plan">Agregar Usuario al Sistema <span class="title-modal"></span></h4>
+          <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+          <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+      <div class="modal-body col-lg-12 ">        
+          <form class="form-material m-t-40"  #formModalItem="ngForm" >
+              <!-- <div class="col-sm-10" >                                                
+                  <div class="form-group modal-form" >   
+                      <label class="label-title" for="detail-name">Name:</label>                      
+                      <input type="text" id="detail-name" class="form-control m-b-0" name="detail-name" [(ngModel)]="addItem.name" >
+                  </div>                      
+              </div>     -->
+          
+              <div class="col-sm-10" >                                                
+                  <div class="form-group modal-form" >   
+                      <label class="label-title" for="detail-name">Nombre:</label>                      
+                      <input type="text" id="detail-name" class="form-control m-b-0" name="detail-name" [(ngModel)]="addItem.displayName">
+                  </div>                      
+              </div>  
+              <div class="digit-size">           
+                  <div class="col-sm-10" >                                                
+                      <div class="form-group modal-form" >   
+                          <label class="label-title" for="detail-email">Email:</label>                      
+                          <input type="text" id="detail-email" class="form-control m-b-0" name="detail-email" [(ngModel)]="addItem.email">
+                      </div>                      
+                  </div>            
+                  <div class="col-sm-10" >                                                
+                          <div class="form-group modal-form" >   
+                              <label class="label-title" for="detail-password">Password:</label>                      
+                              <input type="password" id="detail-password" class="form-control m-b-0" name="detail-password" [(ngModel)]="addItem.password">
+                          </div>                      
+                      </div>  
+                  </div>                
+                  <div class="select p-10">
+                      <select class="select-text"  name="selectedValue" [(ngModel)]="addItem.role">
+                          <option value="" disabled selected></option>
+                          <option value="Staff">Staff</option>
+                          <option value="Shift">Shift</option> 
+                          <option value="Admin">Admin</option>
+                      </select>
+                      <span class="select-highlight"></span>
+                      <span class="select-bar"></span>
+                      <label class="select-label">Seleccionar el rol del usuario</label>
+                  </div>
+          </form>   
+      </div>
+      <div class="modal-footer-s">    
+          <div class="group-button">
+              <button type="button" class="btn btn-danger" (click)="c('Close click')">Cerrar</button>
+              <button type="button" class="btn btn-info" (click)="[ c('Close click'), addUser()]">Guardar</button>   
+          </div>   
+      </div>
+  </ng-template>                
+
+
+    <!-- ViewModalEdit User-->
+
+    <ng-template #contentEdit let-c="close" let-d="dismiss">
+        <div class="modal-header">
+            <h4 class="modal-title title-modal-plan">Editar Usuario al Sistema <span class="title-modal"></span></h4>
+            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body col-lg-12 ">        
+            <form class="form-material m-t-40"  #formModalItem="ngForm" >
+                <!-- <div class="col-sm-10" >                                                
+                    <div class="form-group modal-form" >   
+                        <label class="label-title" for="detail-name">Name:</label>                      
+                        <input type="text" id="detail-name" class="form-control m-b-0" name="detail-name" [(ngModel)]="addItem.name" >
+                    </div>                      
+                </div>     -->
+            
+                <div class="col-sm-10" >                                                
+                    <div class="form-group modal-form" >   
+                        <label class="label-title" for="detail-name">Nombre:</label>                      
+                        <input type="text" id="detail-name" class="form-control m-b-0" name="detail-name" [(ngModel)]="editItem.displayName">
+                    </div>                      
+                </div> 
+                        
+                    <div class="select p-10">
+                        <select class="select-text"  name="selectedValue" [(ngModel)]="editItem.role">                    
+                            <option value="Staff">Staff</option>
+                            <option value="Shift">Shift</option> 
+                            <option value="Admin">Admin</option>
+                        </select>
+                        <span class="select-highlight"></span>
+                        <span class="select-bar"></span>
+                        <label class="select-label">Seleccionar el rol del usuario</label>
+                    </div>
+            </form>   
+        </div>
+        <div class="modal-footer-s">    
+            <div class="group-button">
+                <button type="button" class="btn btn-danger" (click)="c('Close click')">Cerrar</button>
+                <button type="button" class="btn btn-info" (click)="[ c('Close click'), editUser()]">Guardar</button>   
+            </div>   
+        </div>
+    </ng-template>     
+  
+  
+  
+  
+  
+  

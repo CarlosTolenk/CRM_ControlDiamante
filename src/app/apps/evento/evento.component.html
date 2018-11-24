@@ -5,11 +5,11 @@
               <div class="d-flex">
                   <div class="">
                       <h4 class="card-title m-b-5">
-                          <span class="lstick"></span>Planes Activos
+                          <span class="lstick"></span>Eventos Activos
                       </h4>                                                          
                   </div>  
                   <div class="pull-right">
-                      <button class="btn btn-info waves-effect waves-light"  (click)="addPlan()"  type="button"><span class="btn-label"><i class="fa fa-plus"></i></span>Agregar</button>
+                      <button class="btn btn-info waves-effect waves-light"  (click)="addEvento()"  type="button"><span class="btn-label"><i class="fa fa-plus"></i></span>Agregar</button>
                   </div>                                  
               </div>                       
               <div class="stats-bar">                
@@ -21,8 +21,8 @@
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Imagen</th>
                                 <th scope="col">Precio</th>    
-                                <th scope="col">Mensajes</th>      
-                                <th scope="col">Números</th>   
+                                <th scope="col">Fecha</th>      
+                                <th scope="col">Lugar</th>   
                                 <th scope="col">Acciones</th>                                           
                                 </tr>
                             </thead>
@@ -32,11 +32,11 @@
                                         <p class="text-align">{{in+1}}</p>
                                     </th>                                              
                                     <td scope="row">                                                                             
-                                        <p class="text-align">{{item.data.nombre_plan}}</p>
+                                        <p class="text-align">{{item.data.nombre_evento}}</p>
                                     </td>
                                     <td scope="row">        
                                       <div class="contain-img">
-                                          <img class="img-thumbnail" src="{{item.data.imagen_url}}" alt="{{item.data.nombre_plan}}">
+                                          <img class="img-thumbnail" src="{{item.data.image_url}}" alt="{{item.data.nombre_evento}}">
                                       </div>                            
                                       
                                     </td>
@@ -45,16 +45,16 @@
                                     </td>
                                     
                                     <td scope="row">                                                                             
-                                        <p class="text-align">{{item.data.cantidad_mensaje}}</p>
+                                        <p class="text-align">{{item.data.fecha_evento}}</p>
                                     </td>
                                     <td scope="row">                                                                             
-                                        <p class="text-align">{{item.data.cantidad_numero}}</p>
+                                        <p class="text-align">{{item.data.lugar}}</p>
                                     </td >
                                     <td scope="row">
                                       <div class="accion-btn">
-                                          <button type="button" class="btn btn-success btn-circle" (click)="viewPlan(content, item.data)" ><i class="fa fa-eye"></i> </button>
-                                          <button type="button" class="btn btn-info btn-circle" (click)="editarPlan(item.data)"><i class="fa fa-edit"></i> </button>
-                                          <button type="button" class="btn btn-danger btn-circle" (click)="ViewdeletePlan(contentDelete, item.data)"><i class="fa fa-trash"></i> </button>
+                                          <button type="button" class="btn btn-success btn-circle" (click)="viewEvento(content, item.data)" ><i class="fa fa-eye"></i> </button>
+                                          <button type="button" class="btn btn-info btn-circle" (click)="editarEvento(item.data)"><i class="fa fa-edit"></i> </button>
+                                          <button type="button" class="btn btn-danger btn-circle" (click)="ViewdeleteEvento(contentDelete, item.data)"><i class="fa fa-trash"></i> </button>
                                       </div>
                                       
                                     </td>                                            
@@ -84,7 +84,7 @@
                 <h6 class="card-subtitle">This is basic toggletype accordion</h6> -->
         <ng-template #content let-c="close" let-d="dismiss">
             <div class="modal-header">
-                <h4 class="modal-title title-modal-plan">Nombre del Plan: <span class="title-modal">{{detailPlan.nombre_plan}}</span></h4>
+                <h4 class="modal-title title-modal-plan">Nombre del Evento <span class="title-modal">{{detailPlan.nombre_evento}}</span></h4>
                 <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
                 <span aria-hidden="true">&times;</span>
                 </button>
@@ -95,27 +95,21 @@
                        <img class="img-responsive img-thumbnail" src="{{detailPlan.imagen}}" alt="{{detailPlan.nombre_plan}}">
                     </div>
                     <div class="col-md-6">
-                        <p class="title-modal">Fecha de Publicación:<span class="info-modal">{{detailPlan.fecha}}</span></p>    
+                        <p class="title-modal">Fecha de Evento:<span class="info-modal">{{detailPlan.fecha}}</span></p>    
                         <p class="title-modal">Precio:<span class="info-modal">{{detailPlan.precio}}</span></p>  
-                        <p class="title-modal">Cantidad de Mensajes:<span class="info-modal">{{detailPlan.cantidad_mensaje}}</span></p>                      
-                        <p class="title-modal">Cantidad de Números:<span class="info-modal">{{detailPlan.cantiada_numero}}</span> </p>
-                        <p class="title-modal">Duración:<span class="info-modal">{{detailPlan.duracion}}</span> </p>
-                        <p class="title-modal">Efectividad:<span class="info-modal">{{detailPlan.efectividad}}</span> </p>
-                        <p class="title-modal">Loterias:<span class="info-modal">{{detailPlan.loteria}}</span> </p>  
-                        <p class="title-modal">Días de Envio:<span class="info-modal">{{detailPlan.dias_entrega}}</span> </p>                           
+                        <p class="title-modal">Ciudad:<span class="info-modal">{{detailPlan.ciudad}}</span></p>      
+                        <p class="title-modal">Lugar:<span class="info-modal">{{detailPlan.lugar}}</span></p>            
+                        <p class="title-modal">Hora:<span class="info-modal">{{detailPlan.hora}}</span></p>             
+                        <p class="title-modal">Descripción:<span class="info-modal">{{detailPlan.descripcion}}</span> </p>                     
                     </div>
                  </div>
             </div>
-            <div class="modal-footer-s">
-                <div class="stats">
-                    <p class="title-modal">Likes Recibidos:<span class="info-modal">{{detailPlan.likes}}</span> </p>
-                    <p class="title-modal">Compartidos:<span class="info-modal">{{detailPlan.shared}}</span></p>
-                </div>     
+            <div class="modal-footer-s">      
+                <div></div>          
                 <div class="group-button">
-                    <button type="button" class="btn btn-info" (click)="[ c('Close click'), editarPlan(detailPlan)]">Editar</button> 
+                    <button type="button" class="btn btn-info" (click)="[ c('Close click'), editarEvento(detailPlan)]">Editar</button> 
                     <button type="button" class="btn btn-danger" (click)="c('Close click')">Cerrar</button>
-                </div>          
-  
+                </div>  
             </div>
 		</ng-template>
 
@@ -130,27 +124,21 @@
       
                 <ng-template #contentDelete let-c="close" let-d="dismiss">
 					  <div class="modal-header"> 
-					    <h4 class="modal-title">Esta seguro que desea eliminar este PLAN?</h4>
+					    <h4 class="modal-title">Esta seguro que desea eliminar este Evento?</h4>
 					    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
 					      <span aria-hidden="true">&times;</span>
 					    </button>
 					  </div>
 					  <div class="modal-body">
-					    <p>La momento de darle a eliminar este PLAN será eliminado de manera instantanea de la aplicación móvil al igual que del CRM, lo cual deberá estar seguro de realizar esta acción</p>
+					    <p>La momento de darle a eliminar este EVENTO será eliminado de manera instantanea de la aplicación móvil al igual que del CRM, lo cual deberá estar seguro de realizar esta acción</p>
 					  </div>
 					  <div class="modal-footer">
                         <button type="button" class="btn btn-inverse" (click)="c('Close click')">Cerrar</button>
-                        <button type="button" class="btn btn-danger" (click)="[c('Close click') ,deletePlan()]">Eliminar</button>
+                        <button type="button" class="btn btn-danger" (click)="[c('Close click') ,deleteEvento()]">Eliminar</button>
 					  </div>
 				</ng-template>
 
 				
     </div>
    
-</div>
-
-<div class="row">
-    <div class="col-12">
-        <app-evento></app-evento>
-    </div>
 </div>

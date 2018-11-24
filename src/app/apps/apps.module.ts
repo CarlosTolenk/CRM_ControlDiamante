@@ -19,10 +19,15 @@ import { ClienteComponent } from './cliente/cliente.component';
 import { LoteriaComponent } from './loteria/loteria.component';
 import { MensajeComponent } from './mensaje/mensaje.component';
 import { PlaneComponent } from './plane/plane.component';
+import { EventoComponent } from './evento/evento.component';
+
 import { ChatComponent } from './chat/chat.component';
+import { AgregarPlanComponent } from './plane/agregar-plan/agregar-plan.component';
 import { EditarPlaneComponent } from './plane/editar-planes/editar-planes.component';
 import { ProgressBarModule} from "angular-progress-bar";
-import { AgregarPlanComponent } from './plane/agregar-plan/agregar-plan.component'
+import { AgregarEventoComponent } from './evento/agregar-evento/agregar-evento.component';
+import { EditarEventoComponent } from './evento/editar-evento/editar-evento.component';
+import { UserRolesComponent } from './user-roles/user-roles.component'
 
 
 @NgModule({
@@ -48,9 +53,14 @@ import { AgregarPlanComponent } from './plane/agregar-plan/agregar-plan.componen
     LoteriaComponent,
     MensajeComponent,
     PlaneComponent,
+    EventoComponent,
     ChatComponent,
     EditarPlaneComponent,
-    AgregarPlanComponent
+    EditarEventoComponent,
+    AgregarPlanComponent,
+    AgregarEventoComponent,
+    UserRolesComponent,
+
   ]
 })
 export class AppsModule {}

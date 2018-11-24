@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, OnInit } from '@angular/core';
+import { Component, AfterViewInit, OnInit, DoCheck } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ROUTES } from './menu-items';
 import { RouteInfo } from './sidebar.metadata';
@@ -8,9 +8,10 @@ declare var $: any;
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html'
 })
-export class SidebarComponent implements OnInit {
+export class SidebarComponent implements OnInit, DoCheck {
   showMenu = '';
   showSubMenu = '';
+  public user;
   public sidebarnavItems: any[];
   // this is for the open close
   addExpandClass(element: any) {
@@ -32,5 +33,9 @@ export class SidebarComponent implements OnInit {
   // End open close
   ngOnInit() {
     this.sidebarnavItems = ROUTES.filter(sidebarnavItem => sidebarnavItem);
+  }
+
+  ngDoCheck(){
+    this.user = JSON.parse(localStorage.getItem('user'));
   }
 }

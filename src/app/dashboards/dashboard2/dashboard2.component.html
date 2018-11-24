@@ -1,13 +1,13 @@
 <!-- ========================================================== -->
 <!-- Contador de ventas  -->
 <!-- ========================================================== -->
-<app-income-counter></app-income-counter>
+<app-income-counter *ngIf="user.role == 'Admin'"></app-income-counter>
 
 
 <!-- ============================================================== -->
 <!-- Resumen de las ventas -->
 <!-- ============================================================== -->
-<div class="row">
+<div class="row" *ngIf="user.role == 'Admin'">
     <div class="col-lg-6 col-md-12">
             <div class="card">
                 <div class="card-body">
@@ -87,9 +87,9 @@
 <!-- ============================================================== -->
 <!-- Suscriptores y mensajes -->
 <!-- ============================================================== -->
-<div class="row">
+<div class="row" *ngIf="user.role == 'Admin'">
     <div class="col-lg-4 col-md-12">        
-        <app-social-slider></app-social-slider>
+        <app-social-slider ></app-social-slider>
     </div>
     <!-- ============================================================== -->
     <!-- Gráfica de suscriptores-->

@@ -8,6 +8,7 @@ export const ROUTES: RouteInfo[] = [
     class: 'nav-small-cap',
     label: '',
     labelClass: '',
+    role: 'Staff',
     extralink: true,
     submenu: []
   },
@@ -17,6 +18,7 @@ export const ROUTES: RouteInfo[] = [
     icon: 'mdi mdi-gauge',
     class: 'has-arrow',
     label: '',
+    role: 'Staff',
     labelClass: '',
     extralink: false,
     submenu: [
@@ -31,6 +33,7 @@ export const ROUTES: RouteInfo[] = [
     icon: 'mdi mdi-account',
     class: 'has-arrow',
     label: '',
+    role: 'Staff',
     labelClass: 'label label-rouded label-themecolor pull-right',
     extralink: false,
     submenu: [
@@ -51,11 +54,12 @@ export const ROUTES: RouteInfo[] = [
   // },
   {
     path: '/apps/plane',
-    title: 'Planes',
+    title: 'Planes y Eventos',
     icon: 'mdi mdi-bullseye',
     class: 'has-arrow',
     label: '',
     labelClass: '',
+    role: 'Staff',
     extralink: false,
     submenu: [
       // { path: '/component/accordion', title: 'Accordion', icon: '', class: '', label: '', labelClass: '', extralink: false, submenu: [] },
@@ -81,6 +85,7 @@ export const ROUTES: RouteInfo[] = [
     class: 'has-arrow',
     label: '',
     labelClass: '',
+    role: 'Staff',
     extralink: false,
     submenu: [
       // { path: '/extra-component/toastr', title: 'Toster', icon: '', class: '', label: '', labelClass: '', extralink: false, submenu: [] },
@@ -108,6 +113,7 @@ export const ROUTES: RouteInfo[] = [
     class: 'has-arrow',
     label: '',
     labelClass: '',
+    role: 'Staff',
     extralink: false,
     submenu: [
       // { path: '/forms/basicform', title: 'Basic Forms', icon: '', class: '', label: '', labelClass: '', extralink: false, submenu: [] },
@@ -124,6 +130,7 @@ export const ROUTES: RouteInfo[] = [
     class: 'has-arrow',
     label: '',
     labelClass: '',
+    role: 'Staff',
     extralink: false,
     submenu: [
       // { path: '/tables/basictable', title: 'Basic Tables', icon: '', class: '', label: '', labelClass: '', extralink: false, submenu: [] },
@@ -131,16 +138,17 @@ export const ROUTES: RouteInfo[] = [
       // { path: '/tables/datatable', title: 'Data Tables', icon: '', class: '', label: '', labelClass: '', extralink: false, submenu: [] }
     ]
   },
-  // {
-  //   path: '/widgets',
-  //   title: 'Widgets',
-  //   icon: 'mdi mdi-widgets',
-  //   class: '',
-  //   label: '',
-  //   labelClass: '',
-  //   extralink: false,
-  //   submenu: []
-  // },
+  {
+    path: '/apps/usuarios',
+    title: 'Usuarios',
+    icon: 'mdi mdi-account-circle',
+    class: 'has-arrow',
+    label: '',
+    labelClass: '',
+    role: 'Admin',
+    extralink: false,
+    submenu: []
+  },
   // {
   //   path: '',
   //   title: 'Charts & Icons',

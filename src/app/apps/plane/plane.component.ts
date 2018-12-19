@@ -6,7 +6,7 @@ import { map } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
 import { forEach } from '@angular/router/src/utils/collection';
 import { NgbModal, ModalDismissReasons, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { PlanesService } from '../../services/planes.service';
+import { PlanesService } from '../../services/index';
 
 
 @Component({

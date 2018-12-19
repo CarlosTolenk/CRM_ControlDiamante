@@ -9,9 +9,13 @@ import { QuillModule } from 'ngx-quill';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxMaskModule } from 'ngx-mask'
 import { CurrencyMaskModule } from "ng2-currency-mask";
+import { ProgressBarModule} from "angular-progress-bar";
 
-
+//Routes
 import { AppsRoutes } from './apps.routing';
+
+//Components
+
 import { EmailComponent } from './email/email.component';
 import { TaskboardComponent } from './taskboard/taskboard.component';
 import { FullcalendarComponent } from './fullcalendar/fullcalendar.component';
@@ -19,18 +23,12 @@ import { ClienteComponent } from './cliente/cliente.component';
 import { LoteriaComponent } from './loteria/loteria.component';
 import { MensajeComponent } from './mensaje/mensaje.component';
 import { EnviarSMSMasivoComponent } from './mensaje/enviar-sms-masivo/enviar-sms-masivo.component';
-
-import { PlaneComponent } from './plane/plane.component';
-import { EventoComponent } from './evento/evento.component';
-
 import { ChatComponent } from './chat/chat.component';
-import { AgregarPlanComponent } from './plane/agregar-plan/agregar-plan.component';
-import { EditarPlaneComponent } from './plane/editar-planes/editar-planes.component';
-import { ProgressBarModule} from "angular-progress-bar";
-import { AgregarEventoComponent } from './evento/agregar-evento/agregar-evento.component';
-import { EditarEventoComponent } from './evento/editar-evento/editar-evento.component';
 import { UserRolesComponent } from './user-roles/user-roles.component'
 
+//Module
+import { PlaneModule } from  './plane/plane.module';
+import { EventoModule } from './evento/evento.module';
 
 @NgModule({
   // tslint:disable-next-line:max-line-length
@@ -42,11 +40,14 @@ import { UserRolesComponent } from './user-roles/user-roles.component'
     CalendarModule.forRoot(),
     ToastrModule.forRoot(),
     QuillModule,
-    ProgressBarModule,
     DragulaModule,
     CurrencyMaskModule,
     NgxMaskModule.forRoot(),
-    RouterModule.forChild(AppsRoutes)
+    RouterModule.forChild(AppsRoutes),
+    ProgressBarModule,
+    PlaneModule,
+    EventoModule,
+
   ],
   declarations: [
     EmailComponent,
@@ -55,16 +56,12 @@ import { UserRolesComponent } from './user-roles/user-roles.component'
     ClienteComponent,
     LoteriaComponent,
     MensajeComponent,
-    PlaneComponent,
-    EventoComponent,
     ChatComponent,
     EnviarSMSMasivoComponent,
-    EditarPlaneComponent,
-    EditarEventoComponent,
-    AgregarPlanComponent,
-    AgregarEventoComponent,
     UserRolesComponent,
-
+  ],
+  exports: [
+    PlaneModule 
   ]
 })
 export class AppsModule {}

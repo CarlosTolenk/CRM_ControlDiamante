@@ -9,17 +9,13 @@ import { DragulaModule } from 'ng2-dragula/ng2-dragula';
 import { CurrencyMaskModule } from "ng2-currency-mask";
 
 //Components
-import { PlaneComponent } from './plane.component';
-import { AgregarPlanComponent } from './agregar-plan/agregar-plan.component';
-import { EditarPlaneComponent } from './editar-planes/editar-planes.component';
-
-
-//Modules
-import { EventoModule } from '../evento/evento.module';
+import { EventoComponent } from './evento.component';
+import { AgregarEventoComponent } from './agregar-evento/agregar-evento.component';
+import { EditarEventoComponent } from './editar-evento/editar-evento.component';
 
 @NgModule({
   imports: [
-    CommonModule,  
+    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     ToastrModule,
@@ -27,17 +23,17 @@ import { EventoModule } from '../evento/evento.module';
     ProgressBarModule,
     DragulaModule,
     CurrencyMaskModule,
-    NgbModule ,EventoModule
+    NgbModule 
   ],
   declarations: [
-    PlaneComponent,
-    AgregarPlanComponent,
-    EditarPlaneComponent
+    EditarEventoComponent,
+    AgregarEventoComponent,
+    EventoComponent
   ],
   exports: [
-    PlaneComponent,
-    AgregarPlanComponent,
-    EditarPlaneComponent
+    EditarEventoComponent,
+    AgregarEventoComponent,
+    EventoComponent
   ]
 })
-export class PlaneModule { }
+export class EventoModule { }

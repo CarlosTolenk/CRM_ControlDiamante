@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { CalendarModule, CalendarDateFormatter } from 'angular-calendar';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
@@ -18,6 +18,8 @@ import { FullcalendarComponent } from './fullcalendar/fullcalendar.component';
 import { ClienteComponent } from './cliente/cliente.component';
 import { LoteriaComponent } from './loteria/loteria.component';
 import { MensajeComponent } from './mensaje/mensaje.component';
+import { EnviarSMSMasivoComponent } from './mensaje/enviar-sms-masivo/enviar-sms-masivo.component';
+
 import { PlaneComponent } from './plane/plane.component';
 import { EventoComponent } from './evento/evento.component';
 
@@ -35,6 +37,7 @@ import { UserRolesComponent } from './user-roles/user-roles.component'
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     NgbModalModule.forRoot(),
     CalendarModule.forRoot(),
     ToastrModule.forRoot(),
@@ -55,6 +58,7 @@ import { UserRolesComponent } from './user-roles/user-roles.component'
     PlaneComponent,
     EventoComponent,
     ChatComponent,
+    EnviarSMSMasivoComponent,
     EditarPlaneComponent,
     EditarEventoComponent,
     AgregarPlanComponent,

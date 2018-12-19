@@ -31,7 +31,8 @@ import { Approutes } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SpinnerComponent } from './shared/spinner.component';
 
-import { AuthService } from './services/auth.service';
+// import { AuthService } from './services/auth.service';
+import { ServicesModule } from  './services/services.module';
 
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -57,8 +58,9 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     AngularFireDatabaseModule,
     AngularFireStorageModule, // imports firebase/storage only needed for storage features
     OrderModule,
+    ServicesModule
   ],
-  providers: [ AuthService,
+  providers: [ 
     {
       
       provide: PERFECT_SCROLLBAR_CONFIG,

@@ -6,7 +6,7 @@
    
 <!-- Todas las loterias -->
 <div class="row lotery__container">
-  <div class="col-lg-4 lotery__items" *ngFor="let item of items | async ">
+  <div class="col-lg-6 col-xl-4 lotery__items" *ngFor="let item of items | async ">
       <!-- Loteria Normal -->
     <div class="card" *ngIf="item.tipo === 'normal'">
         <div class="card-body shadow">
@@ -21,39 +21,35 @@
                 </div>           
             </div>                       
          
-            <div class="stats-bar">
+            
                 <form class="form-material m-t-40"  #formItem="ngForm" >
                     <div class="row text-center">
-                        <div class="col-sm-4">
-                            <div class="p-10">
+                        <div class="stats-bar">                          
+                            <div class="stats-bar-item  p-10">
                                 <h6 class="m-b-0">En primera</h6>                     
                                 <div class="form-group">                              
                                     <input type="number" class="form-control m-b-0"  [(ngModel)]="item.primera" #primera="ngModel" [ngModelOptions]="{standalone: true}">
-                                </div>
+                                </div>                             
                             </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="p-10">
-                                <h6 class="m-b-0">En segunda</h6>
-                            
+                          
+                             <div class="stats-bar-item p-10">
+                                <h6 class="m-b-0">En segunda</h6>                                
                                 <div class="form-group">                              
                                     <input type="number" class="form-control m-b-0" [(ngModel)]="item.segunda" #segunda="ngModel" [ngModelOptions]="{standalone: true}">
-                                </div>
+                                </div>                        
                             </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="p-10">
-                                <h6 class="m-b-0">En tercera</h6>
-                            
+                           
+                            <div class="stats-bar-item p-10">
+                                <h6 class="m-b-0">En tercera</h6>                                
                                 <div class="form-group">                              
                                     <input type="number" class="form-control m-b-0" [(ngModel)]="item.tercera" #tercera="ngModel" [ngModelOptions]="{standalone: true}">
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        
+                         </div>
+                     </div>
                     <button class="btn btn-block btn-info" (click)="onSubmit(item)">Actualizar</button>
-               </form>
-            </div>
+               </form>        
          </div>
       </div>
 
@@ -168,7 +164,7 @@
                             <button  class="btn btn-success btn-circle" (click)="addSeleccionNumber()"><i class="fa fa-plus"></i> </button>
                         </div>                                  
                     </div>                       
-                    <div class="stats-bar">
+                   
                         <form class="form-material m-t-40"  #formSel="ngForm" >
                                 <div class="table-responsive">
                                         <table class="table">
@@ -194,7 +190,7 @@
                                     </div>  
                             <button class="btn btn-block btn-info" (click)="onChangeSeleccion()">Actualizar</button>
                         </form>
-                    </div>
+                
                  </div>
             </div>
         </div>
@@ -216,7 +212,7 @@
                             <button  class="btn btn-success btn-circle" (click)="addLineaNumber()"><i class="fa fa-plus"></i> </button>
                         </div>                                  
                     </div>                       
-                    <div class="stats-bar">
+                 
                         <form class="form-material m-t-40"  #formSel="ngForm" >
                                 <div class="table-responsive">
                                         <table class="table">
@@ -242,8 +238,8 @@
                                     </div>  
                             <button class="btn btn-block btn-info" (click)="onChangeLinea()">Actualizar</button>
                         </form>
-                    </div>
-                    </div>
+         
+                </div>
             </div>
         </div>
     </div>

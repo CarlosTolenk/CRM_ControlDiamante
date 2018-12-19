@@ -6,11 +6,15 @@
 }
 
 .img-resposive{
-  max-height: 3rem;
+  max-height: 1.5rem;
   margin-top: -0.5rem;
 }
 .card{
   box-sizing: border-box;
+}
+
+.card-title{
+  font-size: 1rem;
 }
 
 .text-align{
@@ -30,7 +34,7 @@
 
 .lotery__items:nth-child(1){
   order: 5;
- flex-wrap: nowrap;
+  flex-wrap: nowrap;
 }
 
 .lotery__items:nth-child(2){
@@ -50,16 +54,51 @@
 }
 
 .btn{
-  width: 90%!important;
+  margin: 0;
+  width: 100%!important;
 }
 
-
-
+.stats-bar{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+ }
 
 
 /* Form */
   textarea {
     resize: none; }
+
+    input[type=number] {
+      width: 50%!important;    
+      text-align: center!important;
+      margin: 0;
+      padding: 0;
+      color: #398bf7;
+  }
+
+  @media only screen and (min-width: 1024px) {
+
+    .stats-bar{
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;  
+      /* width: 100%; */
+     }
+
+  
+
+   
+    input[type=number] {
+      width: 60%!important;    
+      text-align: center!important;
+      margin: 0;
+      padding: 0;
+      color: #398bf7;
+  }
+}
+
+  
   
   /*******************
   Form-control

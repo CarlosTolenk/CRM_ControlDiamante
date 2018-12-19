@@ -1,3 +1,69 @@
-<p>
-  mensaje works!
-</p>
+<!-- <h2>Historial de SMS</h2>
+<div>
+  <ul>
+    <li *ngFor="let item of history.data" >{{item.client}} + {{item.number}}</li>
+  </ul>
+</div> -->
+
+
+<div class="row">
+  <div class="col-lg-12">
+      <div class="card">                
+          <div class="card-body shadow">
+              <div class="d-flex">    
+                  <h3 class="card-title m-b-5 text-center">
+                      <span class="lstick"></span>Historial del SMS                      
+                  </h3>
+                  <div class="pull-right">
+                    <button type="button" class="btn btn-outline-info" (click)="enviarSMS()">Enviar SMS</button>
+                  </div>
+              </div>    
+     
+                  <div class="card">
+                      <div class="card-body">
+                          <div class="table-responsive dark col-12">
+                              <table class="table table-bordered" >
+                                  <thead class="thead-dark">
+                                      <tr>
+                                          <th class="text-nowrap">#</th>
+                                          <th class="text-nowrap">Nombre</th>
+                                          <th class="text-nowrap">Número</th>
+                                          <th class="text-nowrap">Fecha</th>
+                                          <th class="text-nowrap">Plan</th>
+                                          <th class="text-nowrap">Mensaje</th>                               
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                      <!-- | filter:filterQuery    | paginate: { itemsPerPage: 10, currentPage: p }-->
+                                      <tr *ngFor="let item of history.data; let i=index"> 
+                                          <td class="table-col-1">
+                                              {{i+1}}
+                                            </td>                                      
+                                          <td class="table-col-2">
+                                            {{item.client}}
+                                          </td>
+                                          <td class="table-col-2">
+                                           {{item.number}}
+                                          </td>
+                                          <td class="table-col-2">
+                                            {{item.send_message | date:'short'}}
+                                           </td>
+                                          <td class="table-col-2">
+                                           {{item.plan}}
+                                          </td>    
+                                          <td class="table-col-3">
+                                              {{item.body}}
+                                          </td>
+                                      </tr>                                 
+                                  </tbody>                
+                              </table>
+                              <div class="footer-table">
+                                
+                              </div>
+                          </div>
+                      </div>
+              </div>                              
+           </div>
+      </div>
+  </div>
+</div>

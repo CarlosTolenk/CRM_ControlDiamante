@@ -1,0 +1,22 @@
+::ng-deep :root {
+    --width: 5%;
+  }
+
+.table-col-1{
+    width: var(--width);
+  }
+  .table-col-2{
+    width: calc(var(--width) * 2);
+  }
+  .table-col-3{
+    width: calc(var(--width) * 3);
+  }
+  .table-col-4{
+    width: calc(var(--width) * 4);
+  }
+
+  .card-body{
+      width: 100%!important;
+      margin: 0;
+      padding: 1em!important;
+  }

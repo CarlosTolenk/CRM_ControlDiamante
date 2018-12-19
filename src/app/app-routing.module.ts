@@ -11,19 +11,13 @@ export const Approutes: Routes = [
   {
     path: '',
     component: FullComponent,
+    canActivate: [AuthenticationGuard],
     children: [
       { path: '', redirectTo: '/authentication/login', pathMatch: 'full' },
-      { path: 'dashboard', loadChildren: './dashboards/dashboard.module#DashboardModule', canActivate: [AuthenticationGuard] },
-      // { path: 'starter', loadChildren: './starter/starter.module#StarterModule' },
-      { path: 'component', loadChildren: './component/component.module#ComponentsModule' },
-      // { path: 'icons', loadChildren: './icons/icons.module#IconsModule' },
-      // { path: 'forms', loadChildren: './form/forms.module#FormModule' },
-      // { path: 'tables', loadChildren: './table/tables.module#TablesModule' },
-      // { path: 'charts', loadChildren: './charts/charts.module#ChartModule' },
-      // { path: 'widgets', loadChildren: './widgets/widgets.module#WidgetsModule' },
-      { path: 'extra-component', loadChildren: './extra-component/extra-component.module#ExtraComponentModule' },
-      { path: 'apps', loadChildren: './apps/apps.module#AppsModule', canActivate: [AuthenticationGuard] }
-      // { path: 'sample-pages', loadChildren: './sample-pages/sample-pages.module#SamplePagesModule' }
+      { path: 'dashboard', loadChildren: './dashboards/dashboard.module#DashboardModule'},
+    
+      { path: 'apps', loadChildren: './apps/apps.module#AppsModule'}
+
     ]
   },
   {

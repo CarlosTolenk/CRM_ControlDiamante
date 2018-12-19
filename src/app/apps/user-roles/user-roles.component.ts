@@ -18,7 +18,7 @@ import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 
 export class UserRolesComponent implements OnInit {
 
-  private items: Observable<any[]>;
+  public items: Observable<any[]>;
   public selectedValue:any;
 
    //Modal
@@ -37,12 +37,12 @@ export class UserRolesComponent implements OnInit {
     private router: Router,
     private authService: AuthService,
     private storage: AngularFireStorage,
-    private af: AngularFireDatabase
+    private af: AngularFireDatabase,
+    private toastr: ToastrService,   
   ) { }
 
   ngOnInit() {
-    this.items = this.af.list('/users').valueChanges();
-   
+    this.items = this.af.list('/users').valueChanges();   
   }
 
   addUser(){
@@ -69,6 +69,7 @@ export class UserRolesComponent implements OnInit {
 
   recoveryPassword(user){
     this.authService.recoveryPassword(user.email);    
+    this.toastr.success('Se ha enviado un correo electrónico para el cambio de contraseña', ' Acción Completada');
   }
 
   deleteUser(user){

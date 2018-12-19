@@ -6,6 +6,7 @@ import { FullcalendarComponent } from './fullcalendar/fullcalendar.component';
 import { ClienteComponent } from './cliente/cliente.component';
 import { LoteriaComponent } from './loteria/loteria.component';
 import { MensajeComponent } from './mensaje/mensaje.component';
+import { EnviarSMSMasivoComponent } from './mensaje/enviar-sms-masivo/enviar-sms-masivo.component';
 import { PlaneComponent } from './plane/plane.component';
 import { EditarPlaneComponent } from './plane/editar-planes/editar-planes.component';
 import { AgregarPlanComponent } from './plane/agregar-plan/agregar-plan.component';
@@ -40,6 +41,14 @@ export const AppsRoutes: Routes = [
         component: MensajeComponent,
         data: {
           title: 'Controlador de Mensajaeria',
+          urls: [{ title: 'Dashboard', url: '/dashboard' }, { title: 'Mensajes' }]
+        }
+      },
+      {
+        path: 'mensaje/enviar-sms',
+        component: EnviarSMSMasivoComponent,
+        data: {
+          title: 'Controlador de Mensajaeria/Enviar',
           urls: [{ title: 'Dashboard', url: '/dashboard' }, { title: 'Mensajes' }]
         }
       },

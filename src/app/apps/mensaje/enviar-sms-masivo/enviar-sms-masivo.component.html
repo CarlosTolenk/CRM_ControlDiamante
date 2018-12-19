@@ -1,0 +1,141 @@
+<div class="row">
+    <div class="distance-action">
+        <div class="col-6">  
+                <button class="btn btn-info waves-effect waves-light" (click)="goBack()"><span class="btn-label"><i class="fa fa-arrow-left"></i></span>Volver</button>
+        </div>
+        <div class="col-6">
+            <form [formGroup]="form">
+                <input type="radio" formControlName="sms" value="MASIVO"> MASIVO
+                <input type="radio" formControlName="sms" value="ÚNICO"> ÚNICO             
+            </form>
+        </div>  
+    </div>   
+</div>
+
+
+<div class="row" *ngIf="form.value.sms=='ÚNICO'" >   
+    <div class="col-lg-12">
+        <div class="card">               
+            <div class="card-body shadow">
+                <div class="d-flex">                 
+                    <div class="pull-right">
+                     
+                    </div>                                  
+                </div>                       
+                <div class="stats-bar">   
+                    <div class="row">
+                        <!-- <div class="col-lg-4 offset-1  ">
+                            <div class="container">
+                                <img class="image" src="item.image_url" alt="item.nombre_evento"> 
+                                <div class="middle">
+                                    <div class="upload-btn-wrapper">
+                                        <button type="button" class="btn btn-info btn-circle btn-xl"><i class="fa fa-upload"></i></button>
+                                        <input type="file" name="myfile" (change)="uploadFile($event)"/>
+                                    </div>  
+                                </div>                             
+                            </div>
+                            <progress-bar [progress]="uploadPercent | async" [color-degraded]="{'0': '#0091F0',  '15': '#0091F0', '25': '#0091F0', '95': '#00B01D'}"></progress-bar>
+                        
+                        </div>   -->
+                        <div class="col-lg-6">
+                            <form class="form-material m-t-40"  #myFormOnly="ngForm"   >
+                                    <div class="row text-center">
+                                        <div class="col-sm-10">
+                                            <div class="p-9">                                                               
+                                                <div class="form-group content-form">                                                 
+                                                    <label class="label-title" for="nombre_cliente">Cliente:</label>                                                     
+                                                    <input type="text" id="nombre_cliente" class="form-control" [(ngModel)]="makeSMS.client" #nombre_cliente="ngModel" name="nombre_cliente" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-10">
+                                            <div class="p-9">                                                               
+                                                <div class="form-group content-form">                                                 
+                                                    <label class="label-title" for="number_sms">Número:</label>                            
+                                                    <input type="text" id="number_sms" class="form-control" [(ngModel)]="makeSMS.number" #number_sms="ngModel" name="number_sms" prefix="+1" mask="(000) 000-0000" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-10">
+                                            <div class="p-9">                                                               
+                                                <div class="form-group content-form">                                                 
+                                                    <label class="label-title" for="nombre_plan">Plan:</label>                            
+                                                    <input type="text" id="nombre_plan" class="form-control" [(ngModel)]="makeSMS.plan" #nombre_plan="ngModel" name="nombre_plan" required>
+                                                </div>
+                                            </div>
+                                        </div>   
+                                        <div class="col-sm-10">
+                                            <div class="p-9">                                                               
+                                                <div class="form-group content-form">                                                 
+                                                    <label class="label-title" for="description_body">Descripción:</label>                            
+                                                    <textarea class="form-control"  rows="5" cols="120"  name="description_body" [(ngModel)]="makeSMS.body" #description_body="ngModel" required ></textarea>
+                                                   
+                                                </div>
+                                                <p class="text-right text-info">{{160 - makeSMS.body.length }}</p>
+                                            </div>
+                                        </div>    
+                                        <button class="btn btn-block btn-info" type="submit" [disabled]="myFormOnly.form.invalid || !makeSMS.body.length > 0   ||   makeSMS.body.length > 160"  (click)="onSubmitOnly()" >Enviar</button>                           
+                                    </div>
+                                </form>
+                             </div>                     
+                        </div>
+                    </div>
+                </div>
+            </div>   
+        </div>  
+    </div>
+
+<div class="row" *ngIf="form.value.sms=='MASIVO'" >   
+    <div class="col-lg-12">
+        <div class="card">               
+            <div class="card-body shadow">
+                <div class="d-flex">                 
+                    <div class="pull-right">
+                        
+                    </div>                                  
+                </div>                       
+                <div class="stats-bar">   
+                    <div class="row">
+                        <div class="col-lg-4 offset-1  ">
+                            <div class="container">
+                                <img class="image" src="../../../../assets/images/csv-autofetch.svg" alt="csv-autofetch.svg"> 
+                                <div class="middle">
+                                    <div class="upload-btn-wrapper">
+                                        <button type="button" class="btn btn-info btn-circle btn-xl"><i class="fa fa-upload"></i></button>
+                                        <input type="file" name="myfile" (change)="uploadFile($event)" accept=".csv" />
+                                    </div>  
+                                </div>                             
+                            </div>
+                            <!-- <progress-bar progress="uploadPercent" [color-degraded]="{'0': '#0091F0',  '15': '#0091F0', '25': '#0091F0', '95': '#00B01D'}"></progress-bar> -->
+                        
+                        </div>  
+                        <div class="col-lg-6">
+                            <form class="form-material m-t-40"  #myForm="ngForm"   (ngSubmit)="onSubmitBC()"  >
+                                    <div class="row text-center">               
+                                        <div class="col-sm-10">
+                                            <div class="p-9">                                                               
+                                                <div class="form-group content-form">                                                 
+                                                    <label class="label-title" for="nombre_plan">Plan:</label>                            
+                                                    <input type="text" id="nombre_plan" class="form-control" [(ngModel)]="makeSMSBC.plan" #nombre_plan="ngModel" name="nombre_plan" required>
+                                                </div>
+                                            </div>
+                                        </div>   
+                                        <div class="col-sm-10">
+                                            <div class="p-9">                                                               
+                                                <div class="form-group content-form">                                                 
+                                                    <label class="label-title" for="description_body">Descripción:</label>                            
+                                                     <textarea class="form-control"  rows="5" cols="120"  name="description_body" [(ngModel)]="makeSMSBC.body" #description_body="ngModel" required maxlength="50">                             
+                                                    </textarea>
+                                                </div>
+                                            </div>
+                                        </div>    
+                                        <button class="btn btn-block btn-info" type="submit"  [disabled]="myForm.form.invalid || !csvOK"   >Enviar SMS BC</button>                           
+                                    </div>
+                                </form>
+                           </div>                     
+                        </div>
+                    </div>
+                </div>
+            </div>   
+        </div>  
+    </div>

@@ -108,7 +108,7 @@ export const ROUTES: RouteInfo[] = [
   // },
   {
     path: '/apps/mensaje',
-    title: 'Mensajes',
+    title: 'Anuncios',
     icon: 'mdi mdi-cellphone-android',
     class: 'has-arrow',
     label: '',
@@ -123,21 +123,21 @@ export const ROUTES: RouteInfo[] = [
       // { path: '/component/datepicker', title: 'Datepicker', icon: '', class: '', label: '', labelClass: '', extralink: false, submenu: [] }
     ]
   },
-  {
-    path: '/apps/chat',
-    title: 'Chat',
-    icon: 'mdi mdi-message-text',
-    class: 'has-arrow',
-    label: '',
-    labelClass: '',
-    role: 'Staff',
-    extralink: false,
-    submenu: [
-      // { path: '/tables/basictable', title: 'Basic Tables', icon: '', class: '', label: '', labelClass: '', extralink: false, submenu: [] },
-      // { path: '/tables/smarttable', title: 'Smart Tables', icon: '', class: '', label: '', labelClass: '', extralink: false, submenu: [] },
-      // { path: '/tables/datatable', title: 'Data Tables', icon: '', class: '', label: '', labelClass: '', extralink: false, submenu: [] }
-    ]
-  },
+  // {
+  //   path: '/apps/chat',
+  //   title: 'Chat',
+  //   icon: 'mdi mdi-message-text',
+  //   class: 'has-arrow',
+  //   label: '',
+  //   labelClass: '',
+  //   role: 'Staff',
+  //   extralink: false,
+  //   submenu: [
+  //     // { path: '/tables/basictable', title: 'Basic Tables', icon: '', class: '', label: '', labelClass: '', extralink: false, submenu: [] },
+  //     // { path: '/tables/smarttable', title: 'Smart Tables', icon: '', class: '', label: '', labelClass: '', extralink: false, submenu: [] },
+  //     // { path: '/tables/datatable', title: 'Data Tables', icon: '', class: '', label: '', labelClass: '', extralink: false, submenu: [] }
+  //   ]
+  // },
   {
     path: '/apps/usuarios',
     title: 'Usuarios',

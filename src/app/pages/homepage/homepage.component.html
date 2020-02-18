@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Resultado de Loteria</a>
+</nav>
+
+<ng-container *ngIf="lotteries.length > 0; else loading">
+  <div class="homepage-container">
+    <div class="row">
+      <main class="col-lg-9 ">
+        <h2>Loteria Convencionales</h2>
+        <div class="row">
+          <div *ngFor="let lottery of LotteryNormal" class="col-lg-4">
+            <app-card-lottery [lotteryNormal]="lottery"></app-card-lottery>
+          </div>
+        </div>
+        <h2>Loto</h2>
+        <div class="row">
+          <div *ngFor="let lottery of LotteryLotto" class="col-lg-4">
+            <app-card-lotto [lotteryLotto]="lottery"></app-card-lotto>
+          </div>
+        </div>
+      </main>
+      <aside class="col-lg-3">
+        <div class="container-event">
+          <ng-container *ngFor="let event of events">
+            <app-card-events [event]="event"></app-card-events>
+          </ng-container>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+</ng-container>
+
+<ng-template #loading>
+  Loading
+</ng-template>
+
+

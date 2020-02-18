@@ -1,16 +1,18 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { 
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {
   AuthService,
   AuthenticationGuard,
   EventoService,
   MessageSmsService,
   PlanesService
 } from './index';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    HttpClientModule
   ],
   declarations: [],
   providers: [
@@ -21,4 +23,5 @@ import {
     PlanesService
   ]
 })
-export class ServicesModule { }
+export class ServicesModule {
+}

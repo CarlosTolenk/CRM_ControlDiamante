@@ -10,12 +10,12 @@ import { ToastrModule } from 'ngx-toastr';
 import { NgxMaskModule } from 'ngx-mask'
 import { CurrencyMaskModule } from "ng2-currency-mask";
 import { ProgressBarModule} from "angular-progress-bar";
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 //Routes
 import { AppsRoutes } from './apps.routing';
 
 //Components
-
 import { EmailComponent } from './email/email.component';
 import { TaskboardComponent } from './taskboard/taskboard.component';
 import { FullcalendarComponent } from './fullcalendar/fullcalendar.component';
@@ -29,6 +29,8 @@ import { UserRolesComponent } from './user-roles/user-roles.component'
 //Module
 import { PlaneModule } from  './plane/plane.module';
 import { EventoModule } from './evento/evento.module';
+import { ComponentsModule } from '../components/componentes.module';
+
 
 @NgModule({
   // tslint:disable-next-line:max-line-length
@@ -47,6 +49,8 @@ import { EventoModule } from './evento/evento.module';
     ProgressBarModule,
     PlaneModule,
     EventoModule,
+    ComponentsModule,
+    DragDropModule
 
   ],
   declarations: [
@@ -58,7 +62,8 @@ import { EventoModule } from './evento/evento.module';
     MensajeComponent,
     ChatComponent,
     EnviarSMSMasivoComponent,
-    UserRolesComponent,
+    UserRolesComponent
+
   ],
   exports: [
     PlaneModule 

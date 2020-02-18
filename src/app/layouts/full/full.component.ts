@@ -1,7 +1,7 @@
-import { Component, OnInit, HostListener } from '@angular/core';
-import { Router } from '@angular/router';
+import {Component, OnInit, HostListener} from '@angular/core';
+import {Router} from '@angular/router';
 
-import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+import {PerfectScrollbarConfigInterface} from 'ngx-perfect-scrollbar';
 
 @Component({
   selector: 'app-full-layout',
@@ -13,12 +13,14 @@ export class FullComponent implements OnInit {
   showSettings = false;
   showMinisidebar = false;
   showDarktheme = false;
+  actualDate: Date = new Date();
 
   public innerWidth: any;
 
   public config: PerfectScrollbarConfigInterface = {};
 
-  constructor(public router: Router) {}
+  constructor(public router: Router) {
+  }
 
   ngOnInit() {
     if (this.router.url === '/') {

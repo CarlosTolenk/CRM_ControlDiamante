@@ -1,0 +1,26 @@
+.card-lottery {
+  margin-bottom: 1rem;
+}
+
+.header-image {
+  margin-top: 1rem;
+  padding: 0.25rem;
+}
+
+.ball-lottery {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.publication-date {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.75rem;
+  margin-bottom: -0.75rem;
+}
+
+.publication-date p{
+  padding: 0.25rem;
+  color: white;
+}

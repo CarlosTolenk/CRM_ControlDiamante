@@ -1,0 +1,24 @@
+<mat-card class="card-lottery">
+  <mat-card-header>
+    <div mat-card-avatar class="header-image">
+      <img mat-card-image [src]="lotteryLotto.image" [alt]="lotteryLotto.nombre">
+    </div>
+    <mat-card-title>{{lotteryLotto.nombre}}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="ball-lottery">
+      <ng-container *ngFor="let number of lotteryLotto.numeros">
+        <app-ball-lottery
+          [color]="getDiff(lotteryLotto.publicacion)"
+          [number]="number">
+        </app-ball-lottery>
+      </ng-container>
+    </div>
+  </mat-card-content>
+  <mat-card-actions class="container-accordion">
+    <div class="publication-date">
+      <p
+        [ngStyle]="{'background-color': getDiff(lotteryLotto.publicacion)}">{{getPushishedDate(lotteryLotto.publicacion) }}</p>
+    </div>
+  </mat-card-actions>
+</mat-card>

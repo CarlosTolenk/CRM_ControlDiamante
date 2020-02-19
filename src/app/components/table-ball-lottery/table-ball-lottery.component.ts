@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {element} from 'protractor';
 
 @Component({
   selector: 'app-table-ball-lottery',
@@ -10,10 +11,13 @@ export class TableBallLotteryComponent implements OnInit {
   @Input()
   number: Number;
 
+  public tableNumber: number[][];
+
   constructor() {
   }
 
   ngOnInit() {
+    this.tableNumber = this.createTable(10, 10);
   }
 
   get fillNumberByZero() {
@@ -34,11 +38,13 @@ export class TableBallLotteryComponent implements OnInit {
   }
 
   get inverse() {
-    return this.number;
+    const position = this.getPositionTable(Number(this.number));
+    const positionReverse = [this.getReversePosition(position[0]), this.getReversePosition(position[1])];
+    return this.tableNumber[positionReverse[1]][positionReverse[0]];
   }
 
   get jalaJala() {
-    let container = [];
+    const container = [];
     const number = Number(this.number);
     let i = 0;
     do {
@@ -73,6 +79,43 @@ export class TableBallLotteryComponent implements OnInit {
       }
       return number;
     });
-
   }
+
+  createTable(rows, cols) {
+    const tableNumber = [];
+    let counter = 0;
+    for (let col = 0; col < rows; col++) {
+      tableNumber.push([]);
+      tableNumber[col].push(new Array(cols));
+      for (let row = 0; row < cols; row++) {
+        tableNumber[col][row] = counter;
+        counter++;
+      }
+    }
+    return tableNumber;
+  }
+
+
+  getPositionTable(number) {
+    let position = [];
+    this.tableNumber.map((elements, row) => {
+      elements.map((element, col) => {
+        if (element === number) {
+          position.push(col);
+          position.push(row);
+          return true;
+        }
+      });
+    });
+    return position;
+  }
+
+  getReversePosition(number: number) {
+    if (number >= 5) {
+      return number - 5;
+    } else {
+      return number + 5;
+    }
+  }
+
 }

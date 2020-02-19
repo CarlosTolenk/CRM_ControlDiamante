@@ -1,11 +1,11 @@
 <mat-card class="container-event">
   <mat-card-header>
     <div mat-card-avatar class="header-image">
-      <img mat-card-image src="https://lec.events/wp-content/uploads/2020/02/Lec-logo-1.png" alt="lec-events">
+      <img mat-card-image class="avatar-lec" src="https://lec.events/wp-content/uploads/2020/02/Lec-logo-1.png" alt="lec-events">
     </div>
     <mat-card-title>{{event.title.rendered}}</mat-card-title>
   </mat-card-header>
-  <img mat-card-image [src]="event.featured_media | getImageWP |async" alt="Photo of a Shiba Inu">
+  <img mat-card-image class="img-event" [src]="event.featured_media | getImageWP |async" alt="Photo of a Shiba Inu">
   <mat-card-actions>
     <button class="btn btn-block btn-warning" mat-button (click)="goToDetail(event.link)">Ver los detalles</button>
   </mat-card-actions>

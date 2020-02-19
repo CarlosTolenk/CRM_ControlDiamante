@@ -21,7 +21,6 @@ export class HomepageComponent implements OnInit {
       this.lotteries = lotteries;
     });
     this.lecEventsService.getAllEvents().subscribe((events) => {
-      console.log(events);
       this.events = events;
     });
   }

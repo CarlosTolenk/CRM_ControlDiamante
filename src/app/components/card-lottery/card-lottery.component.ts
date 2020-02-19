@@ -33,7 +33,7 @@ export class CardLotteryComponent implements OnInit {
   getColorDate(elapsedTime: number): string {
     if (elapsedTime > 24) {
       return 'gray';
-    } else if (elapsedTime <= 7 && elapsedTime > 12) {
+    } else if (elapsedTime > 7 && elapsedTime <= 23) {
       return 'cornflowerblue';
     }
     return 'green';

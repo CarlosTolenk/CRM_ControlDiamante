@@ -33,6 +33,7 @@ import {SpinnerComponent} from './shared/spinner.component';
 // import { AuthService } from './services/auth.service';
 import {ServicesModule} from './services/services.module';
 import {PipesModule} from './pipes/pipes.module';
+import {SharedModule} from './shared/shared.module';
 
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -44,7 +45,6 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 @NgModule({
   declarations: [
     AppComponent,
-    SpinnerComponent,
     FullComponent,
     BlankComponent,
     NavigationComponent,
@@ -68,6 +68,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     OrderModule,
     ServicesModule,
     DragDropModule,
+    SharedModule,
     PipesModule.forRoot()
   ],
   providers: [{
